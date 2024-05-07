@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "78136252708",
+    "project_id": "bestpc-41db7",
+    "storage_bucket": "bestpc-41db7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78136252708:android:676c3ceef270db8a21fbb1",
+        "android_client_info": {
+          "package_name": "com.example.bestpc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOexyNpnLNLCvNAjDg68DdMUtbU7YOW9E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78136252708:android:efa562e5fac7f19c21fbb1",
+        "android_client_info": {
+          "package_name": "com.example.drcomputer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOexyNpnLNLCvNAjDg68DdMUtbU7YOW9E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

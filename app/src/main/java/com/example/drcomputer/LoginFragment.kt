@@ -1,15 +1,13 @@
 package com.example.drcomputer
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import com.example.drcomputer.R
+import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
@@ -42,7 +40,6 @@ class LoginFragment : Fragment() {
                 .addOnCompleteListener{ task ->
                     if (task.isSuccessful) {
                         Toast.makeText(context,"Login Success",Toast.LENGTH_SHORT).show()
-                        //val intent:Intent = Intent(applicationContext, LoginActivity::class.java)
                     } else {
                         Toast.makeText(context,"Login Failed",Toast.LENGTH_SHORT).show()
                     }

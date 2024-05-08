@@ -2,16 +2,14 @@ package com.example.drcomputer
 
 import android.os.Bundle
 import android.text.TextUtils
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
-import com.example.drcomputer.R
+import androidx.fragment.app.Fragment
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 
 class RegisterFragment : Fragment() {
     override fun onCreateView(
@@ -20,9 +18,9 @@ class RegisterFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_register, container, false)
         val emailText: TextInputEditText = view.findViewById(R.id.emailReg)
-        val passwordText: TextInputEditText  = view.findViewById(R.id.passwordReg)
+        val passwordText: TextInputEditText = view.findViewById(R.id.passwordReg)
         val btnReg: Button = view.findViewById(R.id.btn_register)
-        var auth:FirebaseAuth = FirebaseAuth.getInstance()
+        var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
 
         btnReg.setOnClickListener {

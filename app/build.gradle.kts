@@ -39,12 +39,16 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+//    buildFeatures{
+//        viewBinding = true
+//    }
     externalNativeBuild {
         cmake {
             path = file("src/main/cpp/CMakeLists.txt")
             version = "3.22.1"
         }
     }
+
 }
 
 dependencies {
@@ -60,4 +64,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
 }

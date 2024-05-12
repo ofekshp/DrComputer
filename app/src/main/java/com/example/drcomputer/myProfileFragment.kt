@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
 
@@ -19,8 +19,10 @@ class myProfileFragment : Fragment() {
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
         val uid = currentUser!!.uid
-        val emailText: ImageView = view.findViewById(R.id.emailProfile)
-        val profileText: ImageView = view.findViewById(R.id.userNameProfile)
+        val userNameText: TextView = view.findViewById(R.id.userNameProfile)
+        val emailText: TextView = view.findViewById(R.id.emailProfile)
+        userNameText.text= currentUser.email
+        emailText.text= currentUser.email
 
 //        profileViewModel.getUserByUid(uid){ userEntity ->
 //            if(userEntity!=null){

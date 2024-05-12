@@ -45,31 +45,33 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="25dp"
+                android:clickable="false"
                 android:gravity="center"
                 android:text="@string/profile"
                 android:textSize="25sp"
                 android:textStyle="bold" />
-            <com.google.android.material.textfield.TextInputLayout
+
+            <EditText
+                android:id="@+id/userNameProfile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="@string/userName"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userNameProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/userName" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/emailProfile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailProfile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/email" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="@string/email"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/btn_myPost"

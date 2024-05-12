@@ -9,7 +9,7 @@
         android:id="@+id/mainPageFragment"
         android:name="com.example.drcomputer.mainPageFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_mainpage" >
         <action
             android:id="@+id/action_mainPageFragment_to_loginFragment"
             app:destination="@id/loginFragment" />

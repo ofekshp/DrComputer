@@ -1,7 +1,6 @@
 package com.example.drcomputer
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,22 +28,25 @@ class LoginFragment : Fragment() {
             email = emailText.text.toString()
             password = passwordText.text.toString()
 
-            if (TextUtils.isEmpty(email)) {
-                Toast.makeText(context, "Enter Email", Toast.LENGTH_SHORT).show()
+            if (email.isNullOrEmpty() && password.isNullOrEmpty()) {
+                Toast.makeText(context, "Enter Email & Password", Toast.LENGTH_SHORT).show()
             }
-            if (TextUtils.isEmpty(password)) {
+            else if (password.isNullOrEmpty()) {
                 Toast.makeText(context, "Enter Password", Toast.LENGTH_SHORT).show()
             }
-
-            auth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener{ task ->
-                    if (task.isSuccessful) {
-                        Toast.makeText(context,"Login Success",Toast.LENGTH_SHORT).show()
-                    } else {
-                        Toast.makeText(context,"Login Failed",Toast.LENGTH_SHORT).show()
+            else if (email.isNullOrEmpty()) {
+                Toast.makeText(context, "Enter Email", Toast.LENGTH_SHORT).show()
+            }
+            else {
+                auth.signInWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
+                        } else {
+                            Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
+                        }
                     }
-                }
-
+            }
         }
 
         return view

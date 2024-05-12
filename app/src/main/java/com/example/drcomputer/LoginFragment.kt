@@ -1,5 +1,6 @@
 package com.example.drcomputer
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
-
+    private lateinit var auth: FirebaseAuth
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -21,7 +22,7 @@ class LoginFragment : Fragment() {
         val emailText: TextInputEditText = view.findViewById(R.id.emailLog)
         val passwordText: TextInputEditText = view.findViewById(R.id.passwordLog)
         val btnLog: Button = view.findViewById(R.id.btn_login)
-        var auth: FirebaseAuth = FirebaseAuth.getInstance()
+        auth = FirebaseAuth.getInstance()
         btnLog.setOnClickListener{
             val email: String
             val password: String
@@ -42,6 +43,8 @@ class LoginFragment : Fragment() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
+                            val submitActivityIntent = Intent(activity?.applicationContext, MainActivity::class.java)
+                            startActivity(submitActivityIntent)
                         } else {
                             Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
                         }

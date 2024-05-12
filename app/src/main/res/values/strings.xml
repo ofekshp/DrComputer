@@ -7,5 +7,9 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
-    <string name="welcome">Wellcome\n</string>
+    <string name="welcome">Welcome</string>
+    <string name="profile">Profile</string>
+    <string name="edit">Edit Profile</string>
+    <string name="logout">LogOut</string>
+    <string name="myPost">My Post</string>
 </resources>

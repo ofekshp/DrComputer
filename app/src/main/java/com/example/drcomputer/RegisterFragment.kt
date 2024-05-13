@@ -22,7 +22,7 @@ class RegisterFragment : Fragment() {
         val passwordText: TextInputEditText = view.findViewById(R.id.passwordReg)
         val userNameText: TextInputEditText = view.findViewById(R.id.userNameReg)
         val btnReg: Button = view.findViewById(R.id.btn_register)
-        auth = FirebaseAuth.getInstance()
+
 
         btnReg.setOnClickListener {
             val email: String

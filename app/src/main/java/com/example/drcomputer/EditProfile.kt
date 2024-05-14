@@ -29,11 +29,11 @@ class EditProfile : Fragment() {
         if(user!=null) {
             btnSave.setOnClickListener {
 
-                if (passwordText.text != null)
+                if (!passwordText.text.isNullOrEmpty())
                     updatePassword(user, passwordText.text.toString())
-                if(userNameText.text!=null)
+                if(!userNameText.text.isNullOrEmpty())
                     updateDisplayName(user,userNameText.text.toString())
-                if(emailText.text!=null)
+                if(!emailText.text.isNullOrEmpty())
                     updateEmail(user,emailText.text.toString())
             }
         }
@@ -54,7 +54,7 @@ class EditProfile : Fragment() {
             }
     }
     fun updateEmail(user: FirebaseUser, newEmail: String) {
-        user.updateEmail(newEmail)
+        user.verifyBeforeUpdateEmail(newEmail)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     // Email updated successfully

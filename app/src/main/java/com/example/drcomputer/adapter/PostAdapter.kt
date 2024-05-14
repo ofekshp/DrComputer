@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
 import com.example.drcomputer.models.Post
 
-class MyRvAdapter(private val data:List<Post>): RecyclerView.Adapter<MyViewHolder>()
+class PostAdapter(private val posts:ArrayList<Post>): RecyclerView.Adapter<MyViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup,viewType:Int): MyViewHolder {
         val itemView=LayoutInflater.from(parent.context).inflate(R.layout.post_item,parent,false)
@@ -14,12 +14,12 @@ class MyRvAdapter(private val data:List<Post>): RecyclerView.Adapter<MyViewHolde
     }
 
     override fun getItemCount(): Int {
-        TODO("Not yet implemented")
+       return posts.size
     }
 
     override fun onBindViewHolder(holder:MyViewHolder,position:Int)
 {
-        val post=data[position]
+        val post=posts[position]
         holder.title?.text=post.title
         holder.subtitle?.text=post.subtitle
     }

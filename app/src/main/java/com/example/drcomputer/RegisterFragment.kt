@@ -35,14 +35,14 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(context, "Something is missing", Toast.LENGTH_SHORT).show()
             }
             else {
-                auth.signInWithEmailAndPassword(email, password)
+                auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
                             val submitActivityIntent = Intent(context, MainActivity::class.java)
                             startActivity(submitActivityIntent)
                         } else {
-                            Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
                         }
                     }
             }

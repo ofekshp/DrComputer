@@ -48,10 +48,9 @@ class RegisterFragment : Fragment() {
                     else
                         Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
                 }
+
             }
         }
-
-
         return view;
     }
 

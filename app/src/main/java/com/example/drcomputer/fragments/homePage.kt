@@ -1,4 +1,4 @@
-package com.example.drcomputer
+package com.example.drcomputer.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,8 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.drcomputer.R
 import com.example.drcomputer.adapter.PostAdapter
-import com.example.drcomputer.models.Post
+import com.example.drcomputer.model.Post
 
 class homePage : Fragment() {
     private lateinit var newRecyclerView: RecyclerView

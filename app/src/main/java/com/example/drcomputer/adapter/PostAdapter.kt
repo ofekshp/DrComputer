@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
-import com.example.drcomputer.models.Post
+import com.example.drcomputer.model.Post
 
 class PostAdapter(private val posts:ArrayList<Post>): RecyclerView.Adapter<MyViewHolder>()
 {

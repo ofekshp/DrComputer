@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8a28ab0e-6c9d-419e-8a09-1a16334ab36c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/model/CompleteRegister/completeUserModel.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/model/firebase/UserFB.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/viewmodel/registerVM.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/AuthActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/activities/AuthActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/LoginFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/RegisterFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/fragments/RegisterFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/activities/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/activities/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/arrowBack.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/fragments/arrowBack.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/fragments/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/fragments/LoginFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/fragments/homePage.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/fragments/homePage.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/fragments/myProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/fragments/myProfileFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/homePage.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/mainPageFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/fragments/mainPageFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/drcomputer/myProfileFragment.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_auth.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_auth.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_arrowback.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_arrowback.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_home_page.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_home_page.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_mainpage.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_mainpage.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_my_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_my_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/layout/fragment_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/layout/fragment_register.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/navigation/my_auth_nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/navigation/my_auth_nav.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/res/navigation/my_main_nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/res/navigation/my_main_nav.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/../gradle/libs.versions.toml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2gVCFCtUHm5ietQTBxvh5E2m1uQ" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "android.gradle.sync.needed": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "Merging ziv__Features",
+    "kotlin-language-version-configured": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8a28ab0e-6c9d-419e-8a09-1a16334ab36c" name="Changes" comment="" />
+      <created>1715773251537</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715773251537</updated>
+    </task>
+    <servers />
+  </component>
+</project>

@@ -1,4 +1,4 @@
-package com.example.drcomputer
+package com.example.drcomputer.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.example.drcomputer.R
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
-import com.google.firebase.auth.auth
 
 class EditProfile : Fragment() {
     private lateinit var auth: FirebaseAuth

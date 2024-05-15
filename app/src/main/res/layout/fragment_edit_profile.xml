@@ -6,7 +6,7 @@
     android:id="@+id/editFrameArrow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditProfile">
+    tools:context=".fragments.EditProfile">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/backArrow"
-            android:name="com.example.drcomputer.arrowBack"
+            android:name="com.example.drcomputer.fragments.arrowBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout="@layout/fragment_arrowback" />

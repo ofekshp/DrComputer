@@ -11,8 +11,8 @@ class completeUserModel {
         auth = FirebaseAuth.getInstance()
         firebaseModel.register(email,password){ isSuccessful ->
             if(isSuccessful){
-                //val uid =auth.currentUser?.uid
-                firebaseModel.userCollection(userName, email){success->
+                val uid =auth.currentUser?.uid
+                firebaseModel.userCollection(userName, email,uid.toString()){success->
                     callback(success)
                 }
             }

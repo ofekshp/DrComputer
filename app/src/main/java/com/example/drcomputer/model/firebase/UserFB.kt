@@ -24,14 +24,14 @@ class UserFB {
     fun userCollection(
         userName: String,
         email: String,
-        //uid: String,
+        uid: String,
         callback: (Boolean) -> Unit
     ) {
         val db = Firebase.firestore
         val data = hashMapOf(
             "userName" to userName,
-            "email" to email
-            //"uid" to uid
+            "email" to email,
+            "uid" to uid
         )
         db.collection("users").add(data).addOnSuccessListener {
             println("Post uploaded successfully")

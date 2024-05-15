@@ -39,7 +39,7 @@ class LoginFragment : Fragment() {
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
-                            val submitActivityIntent = Intent(activity?.applicationContext, MainActivity::class.java)
+                            val submitActivityIntent = Intent(context, MainActivity::class.java)
                             startActivity(submitActivityIntent)
                         } else {
                             Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()

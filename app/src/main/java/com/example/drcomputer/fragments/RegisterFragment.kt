@@ -38,20 +38,19 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(context, "Something is missing", Toast.LENGTH_SHORT).show()
             }
             else {
-                  registerUserViewModel.register(userName,email,password){isSuccessful ->
-                      if(isSuccessful)
-                      {
-                          Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
-                          val submitActivityIntent = Intent(context, MainActivity::class.java)
-                          startActivity(submitActivityIntent)
-                      }
-                      else
-                          Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
-                  }
+                registerUserViewModel.register(userName,email,password){isSuccessful ->
+                    if(isSuccessful)
+                    {
+                        Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
+                        val submitActivityIntent = Intent(context, MainActivity::class.java)
+                        startActivity(submitActivityIntent)
+                    }
+                    else
+                        Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
+                }
+
             }
         }
-
-
         return view;
     }
 

@@ -12,6 +12,9 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
 
+
+
+//TODO bring changes to user database and not only authentication
 class EditProfile : Fragment() {
     private lateinit var auth: FirebaseAuth
 

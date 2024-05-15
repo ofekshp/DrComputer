@@ -39,12 +39,16 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+//    buildFeatures{
+//        viewBinding = true
+//    }
     externalNativeBuild {
         cmake {
             path = file("src/main/cpp/CMakeLists.txt")
             version = "3.22.1"
         }
     }
+
 }
 
 dependencies {
@@ -57,7 +61,14 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.firebase.auth)
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.firebase.database)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
+    implementation("com.google.firebase:firebase-database-ktx:20.3.1")
+    implementation("com.google.firebase:firebase-auth:22.3.1")
+    implementation("com.google.firebase:firebase-storage:20.3.0")
+    implementation("com.google.firebase:firebase-firestore:24.11.1")
 }

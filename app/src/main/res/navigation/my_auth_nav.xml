@@ -2,14 +2,14 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/fragmentNavigation"
+    android:id="@+id/authNav"
     app:startDestination="@id/mainPageFragment">
 
     <fragment
         android:id="@+id/mainPageFragment"
-        android:name="com.example.drcomputer.mainPageFragment"
+        android:name="com.example.drcomputer.fragments.mainPageFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_mainpage" >
         <action
             android:id="@+id/action_mainPageFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.drcomputer.LoginFragment"
+        android:name="com.example.drcomputer.fragments.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" >
         <action
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/registerFragment"
-        android:name="com.example.drcomputer.RegisterFragment"
+        android:name="com.example.drcomputer.fragments.RegisterFragment"
         android:label="fragment_register"
         tools:layout="@layout/fragment_register" >
         <action

@@ -6,7 +6,7 @@
     android:id="@+id/registerFrameArrow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.RegisterFragment">
+    tools:context=".fragments.myProfileFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,9 +27,9 @@
         android:id="@+id/InsideTopFrameLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".RegisterFrameInside">
+        tools:context=".myProfileFrameInside">
         <LinearLayout
-            android:id="@+id/registerFrame"
+            android:id="@+id/profileFrame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -39,56 +39,59 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:context=".fragments.RegisterFragment">
+            tools:context=".fragments.myProfileFragment">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="25dp"
+                android:clickable="false"
                 android:gravity="center"
-                android:text="@string/register"
+                android:text="@string/profile"
                 android:textSize="25sp"
                 android:textStyle="bold" />
-            <com.google.android.material.textfield.TextInputLayout
+
+            <EditText
+                android:id="@+id/userNameProfile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="@string/userName"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userNameReg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/userName" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
+            <EditText
+                android:id="@+id/emailProfile"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/emailReg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/email" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/passwordReg"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="@string/password" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:clickable="false"
+                android:focusable="false"
+                android:hint="@string/email"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <Button
-                android:id="@+id/btn_register"
+                android:id="@+id/btn_myPost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/my_primary"
-                android:text="@string/register"/>
+                android:text="@string/myPost" />
+            <Button
+                android:id="@+id/btn_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/my_primary"
+                android:text="@string/edit" />
 
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/my_primary"
+                android:text="@string/logout" />
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

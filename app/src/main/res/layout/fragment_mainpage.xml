@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="15dp"
     android:id="@+id/mainPageFrame"
-    tools:context=".mainPageFragment">
+    tools:context=".fragments.mainPageFragment">
 
     <TextView
         android:layout_width="match_parent"

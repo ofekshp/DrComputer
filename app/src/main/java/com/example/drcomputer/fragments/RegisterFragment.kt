@@ -1,4 +1,4 @@
-package com.example.drcomputer
+package com.example.drcomputer.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,11 +8,14 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.drcomputer.R
+import com.example.drcomputer.activities.MainActivity
+import com.example.drcomputer.viewmodel.RegisterUserViewModel
 import com.google.android.material.textfield.TextInputEditText
-import com.google.firebase.auth.FirebaseAuth
 
 class RegisterFragment : Fragment() {
-    private lateinit var auth: FirebaseAuth
+    private lateinit var registerUserViewModel: RegisterUserViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -22,7 +25,7 @@ class RegisterFragment : Fragment() {
         val passwordText: TextInputEditText = view.findViewById(R.id.passwordReg)
         val userNameText: TextInputEditText = view.findViewById(R.id.userNameReg)
         val btnReg: Button = view.findViewById(R.id.btn_register)
-        auth = FirebaseAuth.getInstance()
+        registerUserViewModel = ViewModelProvider(this)[RegisterUserViewModel::class.java]
 
         btnReg.setOnClickListener {
             val email: String
@@ -35,16 +38,16 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(context, "Something is missing", Toast.LENGTH_SHORT).show()
             }
             else {
-                auth.createUserWithEmailAndPassword(email, password)
-                    .addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
-                            val submitActivityIntent = Intent(context, MainActivity::class.java)
-                            startActivity(submitActivityIntent)
-                        } else {
-                            Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                  registerUserViewModel.register(userName,email,password){isSuccessful ->
+                      if(isSuccessful)
+                      {
+                          Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
+                          val submitActivityIntent = Intent(context, MainActivity::class.java)
+                          startActivity(submitActivityIntent)
+                      }
+                      else
+                          Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
+                  }
             }
         }
 

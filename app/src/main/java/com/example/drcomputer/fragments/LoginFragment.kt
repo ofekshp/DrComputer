@@ -1,4 +1,4 @@
-package com.example.drcomputer
+package com.example.drcomputer.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.example.drcomputer.R
+import com.example.drcomputer.activities.MainActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
@@ -29,14 +31,8 @@ class LoginFragment : Fragment() {
             email = emailText.text.toString()
             password = passwordText.text.toString()
 
-            if (email.isNullOrEmpty() && password.isNullOrEmpty()) {
-                Toast.makeText(context, "Enter Email & Password", Toast.LENGTH_SHORT).show()
-            }
-            else if (password.isNullOrEmpty()) {
-                Toast.makeText(context, "Enter Password", Toast.LENGTH_SHORT).show()
-            }
-            else if (email.isNullOrEmpty()) {
-                Toast.makeText(context, "Enter Email", Toast.LENGTH_SHORT).show()
+            if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
+                Toast.makeText(context, "Something is missing", Toast.LENGTH_SHORT).show()
             }
             else {
                 auth.signInWithEmailAndPassword(email, password)

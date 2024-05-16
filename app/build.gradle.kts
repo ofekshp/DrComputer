@@ -48,6 +48,9 @@ android {
             version = "3.22.1"
         }
     }
+    buildFeatures {
+        viewBinding = true
+    }
 
 }
 
@@ -61,6 +64,8 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.fragment)
     implementation(libs.firebase.auth)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.recyclerview)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.database)
     implementation(libs.androidx.room.common)

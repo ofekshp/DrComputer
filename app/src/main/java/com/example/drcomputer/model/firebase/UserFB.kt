@@ -128,7 +128,7 @@ class UserFB {
                     }
 
                     val updatedData = hashMapOf(
-                        "name" to userName,
+                        "userName" to userName,
                         "email" to email,
                         "uid" to user.uid
                     )

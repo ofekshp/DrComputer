@@ -113,7 +113,7 @@ class UserFB {
                             }
                         }
                     }
-                    if (password != "") {
+                    if (password != ""&& password.isNotEmpty()) {
                         val current = auth.currentUser
                         if (current != null) {
                             updatePassword(current, password) { isSuccessful ->

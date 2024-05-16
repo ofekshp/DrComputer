@@ -1,7 +1,7 @@
 package com.example.drcomputer.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.drcomputer.model.CompleteRegister.completeUserModel
+import com.example.drcomputer.model.CompleteModel.completeUserModel
 
 class RegisterUserViewModel: ViewModel() {
     val UserModel = completeUserModel()

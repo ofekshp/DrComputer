@@ -34,7 +34,7 @@ class UserFB {
             "uid" to uid
         )
         db.collection("users").add(data).addOnSuccessListener {
-            println("Post uploaded successfully")
+            println("User uploaded successfully")
             callback(true)
         }.addOnFailureListener { exception ->
             println("Error uploading user: ${exception.message}")

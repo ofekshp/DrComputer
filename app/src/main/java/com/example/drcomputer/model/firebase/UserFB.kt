@@ -1,6 +1,9 @@
 package com.example.drcomputer.model.firebase
 
+import com.example.drcomputer.model.entities.UserEntity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -24,54 +27,147 @@ class UserFB {
     fun userCollection(
         userName: String,
         email: String,
-        //uid: String,
+        uid: String,
         callback: (Boolean) -> Unit
     ) {
         val db = Firebase.firestore
         val data = hashMapOf(
             "userName" to userName,
-            "email" to email
-            //"uid" to uid
+            "email" to email,
+            "uid" to uid
         )
-        db.collection("users").add(data).addOnSuccessListener {
-            println("Post uploaded successfully")
+        db.collection("users").document().set(data)
+            .addOnSuccessListener {
+                println("User uploaded successfully with UID: $uid")
+                callback(true)
+            }
+            .addOnFailureListener { exception ->
+                println("Error uploading user: ${exception.message}")
+                callback(false)
+            }
+    }
+
+    fun getUserByUid(uid: String, callback: (UserEntity?) -> Unit) {
+        val db = Firebase.firestore
+        val usersCollection = db.collection("users")
+
+        usersCollection.whereEqualTo("uid", uid)
+            .get()
+            .addOnSuccessListener { result ->
+                if (!result.isEmpty) {
+                    val docResult = result.documents.first()
+                    val name = docResult.getString("userName") ?: ""
+                    val email = docResult.getString("email") ?: ""
+
+                    val userEntity = UserEntity(
+                        userName = name,
+                        uid = uid,
+                        email = email
+                    )
+                    callback(userEntity)
+                } else {
+                    println("No document found with UID $uid")
+                    callback(null)
+                }
+            }
+            .addOnFailureListener { exception ->
+                println("Error fetching user document: ${exception.message}")
+                callback(null)
+            }
+    }
+
+    fun editProfile(user: UserEntity, password: String, callback: (Boolean) -> Unit) {
+        val db = Firebase.firestore
+        val usersCollection = db.collection("users")
+        auth = Firebase.auth
+        usersCollection.whereEqualTo("uid", user.uid)
+            .get()
+            .addOnSuccessListener { result ->
+                if (!result.isEmpty) {
+                    val docResult = result.documents.first()
+                    var userName = docResult.getString("userName") ?: ""
+                    var email = docResult.getString("email") ?: ""
+
+                    if (userName != user.userName) {
+                        userName = user.userName
+                        db.collection("users").document(user.uid)
+                            .update("userName", userName)
+                            .addOnSuccessListener {
+                                println("update userName success")
+                            }
+                            .addOnFailureListener {
+                                println("update userName failed")
+                            }
+                    }
+                    if (email != user.email) {
+                        email = user.email
+                        val current = auth.currentUser
+                        if (current != null) {
+                            updateEmail(current, email) { isSuccessful ->
+                                if (isSuccessful) {
+                                    println("update email in auth success")
+                                } else {
+                                    println("failed update email in auth")
+                                    callback(false)
+                                }
+                            }
+                        }
+                    }
+                    if (password != ""&& password.isNotEmpty()) {
+                        val current = auth.currentUser
+                        if (current != null) {
+                            updatePassword(current, password) { isSuccessful ->
+                                if (isSuccessful) {
+                                    println("update password in auth success")
+                                } else {
+                                    println("failed update password in auth")
+                                    callback(false)
+                                }
+                            }
+                        }
+                    }
+
+                    val updatedData = hashMapOf(
+                        "userName" to userName,
+                        "email" to email,
+                        "uid" to user.uid
+                    )
+                    updateUserProfile(docResult.id, updatedData, callback)
+                }
+            }
+    }
+    private fun updateEmail(currentUser: FirebaseUser, newEmail: String, callback: (Boolean) -> Unit) {
+        currentUser.verifyBeforeUpdateEmail(newEmail).addOnSuccessListener {
             callback(true)
-        }.addOnFailureListener { exception ->
-            println("Error uploading user: ${exception.message}")
+        }.addOnFailureListener {
             callback(false)
         }
     }
+    private fun updatePassword(currentUser: FirebaseUser, newPassword: String, callback: (Boolean) -> Unit) {
+        currentUser.updatePassword(newPassword)
+            .addOnSuccessListener {
+                callback(true)
+            }
+            .addOnFailureListener {
+                callback(false)
+            }
+    }
+    private fun updateUserProfile(
+        documentId: String,
+        updatedData: Map<String, Any>,
+        callback: (Boolean) -> Unit
+    ) {
+        val db = Firebase.firestore
+        val userRef = db.collection("users").document(documentId)
 
-//    fun getUserByUid(uid: String, callback: (UserEntity?) -> Unit) {
-//        val db = Firebase.firestore
-//        val usersCollection = db.collection("users")
-//
-//        usersCollection.whereEqualTo("uid", uid)
-//            .get()
-//            .addOnSuccessListener { querySnapshot ->
-//                if (!querySnapshot.isEmpty) {
-//                    val documentSnapshot = querySnapshot.documents.first()
-//                    val userName = documentSnapshot.getString("name") ?: ""
-//                    val email = documentSnapshot.getString("email") ?: ""
-//                    val profileImg = documentSnapshot.getString("img") ?: ""
-//
-//                    val userEntity = UserEntity(
-//                        userMame = userName,
-//                        uid = uid,
-//                        email = email
-//                    )
-//
-//                    callback(userEntity)
-//                } else {
-//                    println("No document found with UID $uid")
-//                    callback(null)
-//                }
-//            }
-//            .addOnFailureListener { exception ->
-//                println("Error fetching user document: ${exception.message}")
-//                callback(null)
-//            }
-//    }
+        userRef.update(updatedData)
+            .addOnSuccessListener {
+                callback(true)
+            }
+            .addOnFailureListener { exception ->
+                callback(false)
+            }
+    }
 
 }
 

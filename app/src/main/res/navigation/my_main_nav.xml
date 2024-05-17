@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/myProfileFragment"
-        android:name="com.example.drcomputer.fragments.myProfileFragment"
+        android:name="com.example.drcomputer.fragments.ProfileFragment"
         android:label="fragment_my_profile"
         tools:layout="@layout/fragment_my_profile" >
         <action

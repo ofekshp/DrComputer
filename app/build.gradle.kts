@@ -68,6 +68,7 @@ dependencies {
     implementation(libs.androidx.recyclerview)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.database)
+    implementation(libs.androidx.room.common)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -76,4 +77,5 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:22.3.1")
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("com.google.firebase:firebase-firestore:24.11.1")
+    implementation ("com.google.firebase:firebase-appcheck-playintegrity:16.0.0-beta01")
 }

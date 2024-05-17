@@ -8,9 +8,9 @@ class completeUserModel {
     private val firebaseModel = UserFB()
     private lateinit var auth: FirebaseAuth
 
-    fun register(user: UserEntity, password: String, callback: (Boolean) -> Unit) {
+    fun register(user: UserEntity,password: String, callback: (Boolean) -> Unit) {
         auth = FirebaseAuth.getInstance()
-        firebaseModel.register(user.email, password) { isSuccessful ->
+        firebaseModel.register(user,password) { isSuccessful ->
             if (isSuccessful) {
                 val uid = auth.currentUser?.uid
                 firebaseModel.userCollection(user.userName, user.email, uid.toString()) { success ->

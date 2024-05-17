@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.drcomputer.R
 import com.example.drcomputer.activities.MainActivity
+import com.example.drcomputer.model.entities.UserEntity
 import com.example.drcomputer.viewmodel.RegisterUserViewModel
 import com.google.android.material.textfield.TextInputEditText
 
@@ -38,7 +39,8 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(context, "Something is missing", Toast.LENGTH_SHORT).show()
             }
             else {
-                registerUserViewModel.register(userName,email,password){isSuccessful ->
+                val user = UserEntity("",userName,email)
+                registerUserViewModel.register(user,password){isSuccessful ->
                     if(isSuccessful)
                     {
                         Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
@@ -48,7 +50,6 @@ class RegisterFragment : Fragment() {
                     else
                         Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
                 }
-
             }
         }
         return view;

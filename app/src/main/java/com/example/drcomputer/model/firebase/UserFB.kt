@@ -10,15 +10,13 @@ import com.google.firebase.ktx.Firebase
 class UserFB {
     private lateinit var auth: FirebaseAuth
 
-    fun register(email: String, password: String, callback: (Boolean) -> Unit) {
+    fun register(user:UserEntity, password: String, callback: (Boolean) -> Unit) {
         auth = FirebaseAuth.getInstance()
-        auth.createUserWithEmailAndPassword(email, password)
+        auth.createUserWithEmailAndPassword(user.email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     callback(true)
                 } else {
-                    val exception = task.exception
-                    println("Registration failed: ${exception?.message}")
                     callback(false)
                 }
             }
@@ -164,7 +162,7 @@ class UserFB {
             .addOnSuccessListener {
                 callback(true)
             }
-            .addOnFailureListener { exception ->
+            .addOnFailureListener {
                 callback(false)
             }
     }

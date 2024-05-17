@@ -2,11 +2,12 @@ package com.example.drcomputer.viewmodel
 
 import androidx.lifecycle.ViewModel
 import com.example.drcomputer.model.CompleteModel.completeUserModel
+import com.example.drcomputer.model.entities.UserEntity
 
 class RegisterUserViewModel: ViewModel() {
     val UserModel = completeUserModel()
 
-    fun register(userName:String,email : String, password: String,  callback: (Boolean) -> Unit){
-        UserModel.register(userName,email, password, callback)
+    fun register(user:UserEntity, password: String,  callback: (Boolean) -> Unit){
+        UserModel.register(user, password, callback)
     }
 }

@@ -25,6 +25,10 @@ class homePage : Fragment() {
         buttonProfile.setOnClickListener{
             findNavController().navigate(R.id.action_homePage_to_myProfileFragment)
         }
+        val buttonUpload=view.findViewById<Button>(R.id.btn_upload)
+        buttonUpload.setOnClickListener{
+            findNavController().navigate(R.id.action_homePage_to_postUpload)
+        }
         newRecyclerView = view.findViewById(R.id.post_view)
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         newRecyclerView.setHasFixedSize(true)

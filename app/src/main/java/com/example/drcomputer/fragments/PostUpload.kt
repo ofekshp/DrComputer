@@ -5,56 +5,87 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.example.drcomputer.R
+import com.example.drcomputer.activities.AuthActivity
+import com.example.drcomputer.model.CompleteModel.CompletePostModel
+import com.example.drcomputer.model.entities.PostEntity
+import com.example.drcomputer.viewmodel.RegisterUserViewModel
+import com.example.drcomputer.viewmodel.UploadPostViewModel
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [PostUpload.newInstance] factory method to
- * create an instance of this fragment.
- */
 class PostUpload : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+private lateinit var postViewModel:UploadPostViewModel
+private lateinit var auth:FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_post_upload, container, false)
+        val view= inflater.inflate(R.layout.fragment_post_upload, container, false)
+        val typeText: TextInputEditText = view.findViewById(R.id.typeUp)
+        val cpuText: TextInputEditText = view.findViewById(R.id.cpuUp)
+        val gpuText: TextInputEditText = view.findViewById(R.id.gpuUp)
+        val motherboard: TextInputEditText = view.findViewById(R.id.motherboardUp)
+        val memory: TextInputEditText = view.findViewById(R.id.memoryUp)
+        val ram: TextInputEditText = view.findViewById(R.id.ramUp)
+        auth=FirebaseAuth.getInstance()
+
+        val button=view.findViewById<Button>(R.id.btn_upload).setOnClickListener{
+            val type: String=typeText.text.toString()
+            val cpu: String=cpuText.text.toString()
+            val gpu: String=gpuText.text.toString()
+            val motherboard: String=motherboard.text.toString()
+            val memory: String=memory.text.toString()
+            val ram: String=ram.text.toString()
+
+            if(validate(type,cpu,gpu,motherboard,memory,ram))
+            {
+                if(auth.currentUser!=null)
+                {
+                    postViewModel = ViewModelProvider(this)[UploadPostViewModel::class.java]
+                    val post: PostEntity =PostEntity("",type,cpu,gpu,motherboard,memory,ram, auth.currentUser!!.uid)
+                    postViewModel.uploadPost(post){ isSuccessful->
+                        if(isSuccessful)
+                        {
+                            Toast.makeText(context, "Uploaded successfully", Toast.LENGTH_SHORT).show()
+                            findNavController().navigate(R.id.action_postUpload_to_homePage)
+                        }
+                        else
+                        {
+                            Toast.makeText(context, "Upload failed", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                Toast.makeText(context, "Please fill in all the information correctly", Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment PostUpload.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            PostUpload().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+    private fun validate(
+        type: String, cpu: String, gpu: String, motherboard: String, memory: String, ram: String
+
+    ): Boolean {
+        val isTypeValid = type.isNotEmpty()
+        val isCpuValid = cpu.isNotEmpty()
+        val isGpuValid = gpu.isNotEmpty()
+        val isMotherboardValid = motherboard.isNotEmpty()
+        val isMemoryValid = memory.isNotEmpty()
+        val isRamValid = ram.isNotEmpty()
+
+
+
+        return isTypeValid && isCpuValid && isGpuValid  && isMotherboardValid && isMemoryValid && isRamValid
     }
 }

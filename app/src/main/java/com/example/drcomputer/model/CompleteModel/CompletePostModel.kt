@@ -26,6 +26,7 @@ class CompletePostModel {
                 // Update the post in the local database
                 GetDrComputer.getExecutorService().execute {
                     modelRoom.insertPost(post)
+                 GetDrComputer.getExecutorService()
                 }
             }
 

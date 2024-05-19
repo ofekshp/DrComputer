@@ -76,6 +76,8 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    implementation ("androidx.multidex:multidex:2.0.1")
+    implementation("androidx.appcompat:appcompat:1.6.1")
     implementation(platform("com.google.firebase:firebase-bom:33.0.0"))
     implementation("com.google.firebase:firebase-database-ktx:20.3.1")
     implementation("com.google.firebase:firebase-auth:22.3.1")
@@ -94,5 +96,8 @@ dependencies {
     annotationProcessor ("androidx.room:room-compiler:2.6.1")
 
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
 }

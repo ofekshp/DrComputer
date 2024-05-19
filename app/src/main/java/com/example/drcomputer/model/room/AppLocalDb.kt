@@ -6,13 +6,11 @@ import androidx.room.RoomDatabase
 import com.example.drcomputer.GetDrComputer
 import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.model.entities.UserEntity
-import com.example.drcomputer.model.room.daos.PostDao
 import com.example.drcomputer.model.room.daos.UserDao
 
 
 @Database(entities = [UserEntity::class,PostEntity::class ], version = 2, exportSchema = false)
 abstract class AppLocalDB : RoomDatabase() {
-    abstract fun postDao(): PostDao
     abstract fun userDao(): UserDao
     companion object {
         // Define a singleton instance of the database

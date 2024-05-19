@@ -7,7 +7,7 @@ import java.io.Serializable
 @Entity(tableName = "posts")
 data class PostEntity (
     @PrimaryKey(autoGenerate = true)
-    var pid: String,
+    var pid: Int,
     var type: String,
     var cpu: String,
     var gpu: String,

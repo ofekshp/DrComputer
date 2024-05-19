@@ -20,6 +20,7 @@ firebaseFirestoreKtx = "25.0.0"
 firebaseDatabase = "21.0.0"
 firebaseFirestore = "25.0.0"
 roomCommon = "2.6.1"
+roomKtx = "2.6.1"
 
 
 
@@ -43,6 +44,7 @@ firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-fires
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore", version.ref = "firebaseFirestore" }
 androidx-room-common = { group = "androidx.room", name = "room-common", version.ref = "roomCommon" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 
 
 

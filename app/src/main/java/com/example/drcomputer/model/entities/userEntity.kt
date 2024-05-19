@@ -12,6 +12,7 @@ data class UserEntity(
 
     var userName: String,
 
-    var email: String
+    var email: String,
+
 ): Serializable
 

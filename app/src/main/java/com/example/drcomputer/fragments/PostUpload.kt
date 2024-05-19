@@ -54,7 +54,7 @@ private lateinit var auth:FirebaseAuth
                         if(isSuccessful)
                         {
                             Toast.makeText(context, "Uploaded successfully", Toast.LENGTH_SHORT).show()
-                            findNavController().navigate(R.id.action_postUpload_to_homePage)
+                            findNavController().popBackStack()
                         }
                         else
                         {

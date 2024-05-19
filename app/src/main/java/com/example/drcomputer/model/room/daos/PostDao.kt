@@ -11,7 +11,7 @@ import com.example.drcomputer.model.entities.PostEntity
 interface PostDao
 {
     @Query("SELECT * FROM posts")
-    fun getAll():ArrayList<PostEntity>?
+    fun getAll():List<PostEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(post:PostEntity)
@@ -20,6 +20,6 @@ interface PostDao
     @Delete
     fun delete(post: PostEntity)
 
-    @Query("SELECT * FROM posts WHERE pid =:pid")
-    fun getPostById(pid: String): ArrayList<PostEntity>?
+    @Query("SELECT * FROM posts WHERE uid =:uid")
+    fun getPostByUserId(uid: String): List<PostEntity>
 }

@@ -37,6 +37,7 @@ class homePage : Fragment() {
     private fun getData():ArrayList<Post>  {
         val list:ArrayList<Post> = arrayListOf<Post>()
         for (number in 1..10) {
+            //TODO get data from room
             val post = Post("Title Number $number", "This is subtitle number $number")
             list.add(post)
         }

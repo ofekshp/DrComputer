@@ -31,18 +31,19 @@ private lateinit var auth:FirebaseAuth
         val typeText: TextInputEditText = view.findViewById(R.id.typeUp)
         val cpuText: TextInputEditText = view.findViewById(R.id.cpuUp)
         val gpuText: TextInputEditText = view.findViewById(R.id.gpuUp)
-        val motherboard: TextInputEditText = view.findViewById(R.id.motherboardUp)
-        val memory: TextInputEditText = view.findViewById(R.id.memoryUp)
-        val ram: TextInputEditText = view.findViewById(R.id.ramUp)
+        val motherboardText: TextInputEditText = view.findViewById(R.id.motherboardUp)
+        val memoryText: TextInputEditText = view.findViewById(R.id.memoryUp)
+        val ramText: TextInputEditText = view.findViewById(R.id.ramUp)
         auth=FirebaseAuth.getInstance()
 
-        val button=view.findViewById<Button>(R.id.btn_upload).setOnClickListener{
+        val buttonUpload=view.findViewById<Button>(R.id.btn_upload)
+            buttonUpload.setOnClickListener{
             val type: String=typeText.text.toString()
             val cpu: String=cpuText.text.toString()
             val gpu: String=gpuText.text.toString()
-            val motherboard: String=motherboard.text.toString()
-            val memory: String=memory.text.toString()
-            val ram: String=ram.text.toString()
+            val motherboard: String=motherboardText.text.toString()
+            val memory: String=memoryText.text.toString()
+            val ram: String=ramText.text.toString()
 
             if(validate(type,cpu,gpu,motherboard,memory,ram))
             {

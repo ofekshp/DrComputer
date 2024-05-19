@@ -15,8 +15,9 @@ class PostFB {
     fun uploadPost(post:PostEntity, callback: (Boolean) -> Unit) {
 
         val docRef = db.collection("posts").document()
+        val gen=docRef.id
         val data = hashMapOf(
-            "pid" to post.pid,
+            "pid" to gen,
             "type" to post.type,
             "cpu" to post.cpu,
             "gpu" to post.gpu,
@@ -25,7 +26,7 @@ class PostFB {
             "ram" to post.ram,
             "uid" to post.uid,
         )
-        db.collection("posts").document().set(data)
+        docRef.set(data)
             .addOnSuccessListener {
                 println("User uploaded successfully with PID: $post.pid")
                 callback(true)

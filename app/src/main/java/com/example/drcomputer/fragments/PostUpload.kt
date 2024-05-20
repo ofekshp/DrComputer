@@ -37,7 +37,7 @@ private lateinit var auth:FirebaseAuth
         auth=FirebaseAuth.getInstance()
 
         val buttonUpload=view.findViewById<Button>(R.id.btn_upload)
-            buttonUpload.setOnClickListener{
+            .setOnClickListener{
             val type: String=typeText.text.toString()
             val cpu: String=cpuText.text.toString()
             val gpu: String=gpuText.text.toString()

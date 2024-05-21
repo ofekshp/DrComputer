@@ -96,8 +96,8 @@ dependencies {
 //    annotationProcessor ("androidx.room:room-compiler:2.6.1")
 //
 //    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-//    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
-//    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
-//    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
 }

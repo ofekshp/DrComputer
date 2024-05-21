@@ -1,24 +1,25 @@
 package com.example.drcomputer.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
 import com.example.drcomputer.model.entities.PostEntity
 
-class PostAdapter(private val posts:ArrayList<PostEntity>): RecyclerView.Adapter<MyViewHolder>()
-{
+class MyPostsAdapter (): RecyclerView.Adapter<MyViewHolder>()
+{ private var posts = arrayListOf<PostEntity>()
     override fun onCreateViewHolder(parent: ViewGroup,viewType:Int): MyViewHolder {
         val itemView=LayoutInflater.from(parent.context).inflate(R.layout.post_item,parent,false)
         return MyViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
-       return posts.size
+        return posts.size
     }
 
     override fun onBindViewHolder(holder:MyViewHolder,position:Int)
-{
+    {
         val post=posts[position]
         holder.type?.text=post.type
         holder.cpu?.text=post.cpu
@@ -27,5 +28,11 @@ class PostAdapter(private val posts:ArrayList<PostEntity>): RecyclerView.Adapter
         holder.ram?.text=post.ram
         holder.memory?.text=post.memory
 
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun submitList(newPosts: ArrayList<PostEntity>) {
+        posts = newPosts
+        notifyDataSetChanged()
     }
 }

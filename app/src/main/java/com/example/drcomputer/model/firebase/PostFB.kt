@@ -81,6 +81,7 @@ class PostFB {
                     for (document in result!!) {
                         val post=PostEntity(document.id,"", "", "", "", "", "", "")
                         post.fromMap(document.data)
+                        list.add(post)
 
                     }
                     callback(list)

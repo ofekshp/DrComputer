@@ -12,4 +12,5 @@ class GetPostsViewModel:ViewModel() {
     fun getAllPosts(){
         _posts = postsModel.getAllPosts()
     }
+
 }

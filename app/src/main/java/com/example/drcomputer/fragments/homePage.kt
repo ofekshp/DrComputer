@@ -11,15 +11,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
-import com.example.drcomputer.adapter.PostAdapter
-import com.example.drcomputer.model.Post
+import com.example.drcomputer.adapter.MyPostsAdapter
+import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.viewmodel.GetPostsViewModel
-import com.example.drcomputer.viewmodel.UploadPostViewModel
 
 class homePage : Fragment() {
     private lateinit var postViewModel: GetPostsViewModel
     private lateinit var newRecyclerView: RecyclerView
-    private lateinit var newList: ArrayList<Post>
+    private lateinit var myAdapter: MyPostsAdapter
+    private lateinit var newList: ArrayList<PostEntity>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,24 +37,36 @@ class homePage : Fragment() {
         newRecyclerView = view.findViewById(R.id.post_view)
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         newRecyclerView.setHasFixedSize(true)
-        newList=getPosts()
-        newRecyclerView.adapter= PostAdapter(newList)
+        myAdapter= MyPostsAdapter()
+        newRecyclerView.adapter= myAdapter
+        fetchUserPosts()
+        observeUserPosts()
         return view
     }
 
 
-    private fun getPosts():ArrayList<Post>  {
+    private fun getPosts():ArrayList<PostEntity>  {
 
 
-        val list:ArrayList<Post> = arrayListOf<Post>()
+        val list:ArrayList<PostEntity> = arrayListOf<PostEntity>()
         postViewModel.getAllPosts()
         postViewModel.posts.observe(viewLifecycleOwner){posts->
-           for (post in posts) {
-               val item = Post("Computer type:  ${post.type}", "Cpu:  ${post.cpu}")
-               list.add(item)
+           for (post in posts)
+           {
+               list.add(post)
            }
         }
         return list
+    }
+    private fun observeUserPosts() {
+        postViewModel.posts.observe(viewLifecycleOwner) { posts ->
+            val postsArrayList = ArrayList(posts)
+            myAdapter.submitList(postsArrayList)
+        }
+    }
+    private fun fetchUserPosts() {
+        // Call the getUserPosts function to start observing the LiveData
+        postViewModel.getAllPosts()
     }
 
 }

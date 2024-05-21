@@ -5,6 +5,7 @@ import com.example.drcomputer.GetDrComputer
 import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.model.firebase.PostFB
 import com.example.drcomputer.model.room.PostModel
+import com.google.firebase.auth.FirebaseAuth
 import java.util.LinkedList
 
 
@@ -16,6 +17,7 @@ class CompletePostModel {
     private val modelFirebase = PostFB()
     private val modelRoom = PostModel()
     private val allPosts = AllPostLiveData()
+    private val myPosts=AllPostLiveData()
 
     fun getAllPosts(): AllPostLiveData{
         return allPosts
@@ -53,6 +55,7 @@ class CompletePostModel {
 
 
     fun getPostsByUid(uid: String): MutableLiveData<List<PostEntity>> {
+
         val postsLiveData = MutableLiveData<List<PostEntity>>()
         GetDrComputer.getExecutorService().execute {
             val postsByUid = modelRoom.getPostsByUid(uid)
@@ -70,13 +73,13 @@ class CompletePostModel {
                 }
             }
         }
-
         return postsLiveData
     }
 
     inner class AllPostLiveData: MutableLiveData<List<PostEntity>>() {
         init{
             value = LinkedList<PostEntity>()
+
         }
 
         override fun onActive() {

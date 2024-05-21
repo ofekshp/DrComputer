@@ -60,11 +60,7 @@ class EditProfile : Fragment() {
                     if (success)
                         Toast.makeText(context, "New Profile Save", Toast.LENGTH_SHORT).show()
                     else
-                        Toast.makeText(
-                            context,
-                            "something went wrong, try again",
-                            Toast.LENGTH_SHORT
-                        ).show()
+                        Toast.makeText(context, "something went wrong, try again", Toast.LENGTH_SHORT).show()
                 }
             }
         }

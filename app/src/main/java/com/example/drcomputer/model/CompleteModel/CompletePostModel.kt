@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.drcomputer.GetDrComputer
 import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.model.firebase.PostFB
-import com.example.drcomputer.model.room.PostModel
+import com.example.drcomputer.model.room.PostRoom
 import java.util.LinkedList
 
 
@@ -14,7 +14,7 @@ class CompletePostModel {
     }
 
     private val modelFirebase = PostFB()
-    private val modelRoom = PostModel()
+    private val modelRoom = PostRoom()
     private val allPosts = AllPostLiveData()
 
     fun getAllPosts(): AllPostLiveData{
@@ -34,6 +34,18 @@ class CompletePostModel {
         }
 
     }
+
+    fun editPost(post: PostEntity, callback: (Boolean) -> Unit){
+        modelFirebase.editPost(post){ isSuccessful ->
+            if (isSuccessful) {
+                GetDrComputer.getExecutorService().execute {
+                    modelRoom.editPost(post)
+                }
+            }
+            callback(isSuccessful)
+        }
+    }
+
     fun deletePost(post: PostEntity, callback: (Boolean) -> Unit) {
         // Delete from Firebase
         modelFirebase.deletePostFromFirebase(post) { isSuccessful ->

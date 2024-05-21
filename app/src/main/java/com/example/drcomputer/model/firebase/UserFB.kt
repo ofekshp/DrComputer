@@ -90,6 +90,12 @@ class UserFB {
                         userName = user.userName
                         db.collection("users").document(user.uid)
                             .update("userName", userName)
+                            .addOnSuccessListener {
+                                println("update userName success")
+                            }
+                            .addOnFailureListener{e->
+                                println("update userName failed: ${e.message}")
+                            }
                     }
                     if (email != user.email) {
                         email = user.email

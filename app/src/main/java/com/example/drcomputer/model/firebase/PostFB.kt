@@ -70,7 +70,6 @@ class PostFB {
 
 
     fun getPostsByUserId(uid: String, callback: (List<PostEntity>) -> Unit) {
-
         val db = Firebase.firestore
         val usersCollection = db.collection("posts")
 

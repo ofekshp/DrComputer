@@ -8,7 +8,7 @@ import java.util.concurrent.Executors
 
 class GetDrComputer : Application() {
     companion object {
-        private const val THREAD_AMOUNT = 4
+        private const val THREAD_AMOUNT = 2
         private val executorService: ExecutorService = Executors.newFixedThreadPool(THREAD_AMOUNT)
         private lateinit var instance: GetDrComputer;
 

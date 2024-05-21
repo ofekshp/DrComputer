@@ -5,7 +5,7 @@ plugins {
     kotlin("kapt")
     id("kotlin-android")
     id("kotlin-kapt")
-}
+}       
 
 android {
     namespace = "com.example.drcomputer"
@@ -84,21 +84,20 @@ dependencies {
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("com.google.firebase:firebase-firestore:24.11.1")
     implementation ("com.google.firebase:firebase-appcheck-playintegrity:16.0.0-beta01")
-
+    
     val room_version = "2.6.1"
-
     implementation("androidx.room:room-runtime:$room_version")
-    annotationProcessor("androidx.room:room-compiler:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
-    implementation("com.google.dagger:hilt-android:2.44")
-    annotationProcessor("com.google.dagger:hilt-android-compiler:2.44")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-    annotationProcessor ("androidx.room:room-compiler:2.6.1")
-
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
-    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
+//    implementation("com.google.dagger:hilt-android:2.44")
+//    annotationProcessor("com.google.dagger:hilt-android-compiler:2.44")
+//    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
+//    annotationProcessor ("androidx.room:room-compiler:2.6.1")
+//
+//    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+//    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
+//    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
+//    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
 
 }

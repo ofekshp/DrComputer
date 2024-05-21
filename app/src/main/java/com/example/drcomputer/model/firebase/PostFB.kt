@@ -1,8 +1,6 @@
 package com.example.drcomputer.model.firebase
 
-import com.example.drcomputer.model.Post
 import com.example.drcomputer.model.entities.PostEntity
-import com.example.drcomputer.model.entities.UserEntity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
@@ -70,7 +68,9 @@ class PostFB {
     }
 
 
+
     fun getPostsByUserId(uid: String, callback: (List<PostEntity>) -> Unit) {
+
         val db = Firebase.firestore
         val usersCollection = db.collection("posts")
 

@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_myProfileFragment_to_editProfile"
             app:destination="@id/editProfile" />
+        <action
+            android:id="@+id/action_myProfileFragment_to_myPosts"
+            app:destination="@id/myPosts" />
     </fragment>
     <fragment
         android:id="@+id/editProfile"
@@ -40,4 +43,9 @@
             android:id="@+id/action_postUpload_to_homePage"
             app:destination="@id/homePage" />
     </fragment>
+    <fragment
+        android:id="@+id/myPosts"
+        android:name="com.example.drcomputer.fragments.MyPosts"
+        android:label="fragment_my_posts"
+        tools:layout="@layout/fragment_my_posts" />
 </navigation>

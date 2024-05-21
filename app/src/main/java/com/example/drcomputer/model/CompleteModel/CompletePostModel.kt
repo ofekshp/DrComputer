@@ -52,8 +52,8 @@ class CompletePostModel {
 
 
 
-    fun getPostsByUid(uid: String): MutableLiveData<List<PostEntity>> {
-        val postsLiveData = MutableLiveData<List<PostEntity>>()
+    fun getPostsByUid(uid: String): AllPostLiveData {
+        val postsLiveData = AllPostLiveData()
         GetDrComputer.getExecutorService().execute {
             val postsByUid = modelRoom.getPostsByUid(uid)
             GetDrComputer.getExecutorService().execute {

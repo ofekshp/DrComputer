@@ -39,6 +39,10 @@ class ProfileFragment : Fragment() {
         editProfileBtn.setOnClickListener{
             findNavController().navigate(R.id.action_myProfileFragment_to_editProfile)
         }
+        val myPostsBtn=view.findViewById<Button>(R.id.btn_myPost)
+        myPostsBtn.setOnClickListener{
+            findNavController().navigate(R.id.action_myProfileFragment_to_myPosts)
+        }
         return view
     }
 

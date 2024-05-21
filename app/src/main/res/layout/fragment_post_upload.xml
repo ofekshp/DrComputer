@@ -13,6 +13,21 @@
         android:layout_height="match_parent"
         tools:context=".uploadFrameInside">
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/backArrow"
+                android:name="com.example.drcomputer.fragments.arrowBack"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:layout="@layout/fragment_arrowback" />
+        </LinearLayout>
+        <LinearLayout
             android:id="@+id/uploadFrame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

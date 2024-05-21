@@ -4,7 +4,7 @@ import com.example.drcomputer.model.entities.UserEntity
 
 class UserRoom {
     fun insert(user: UserEntity){
-        val db = AppLocalDB.getInstance().userDao().insert(user)
+       return AppLocalDB.getInstance().userDao().insert(user)
     }
     fun getUserById(uid: String): UserEntity {
         return AppLocalDB.getInstance().userDao().getUserById(uid)

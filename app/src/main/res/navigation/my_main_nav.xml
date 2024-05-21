@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homePage_to_myProfileFragment"
             app:destination="@id/myProfileFragment" />
+        <action
+            android:id="@+id/action_homePage_to_postUpload"
+            app:destination="@id/postUpload" />
     </fragment>
     <fragment
         android:id="@+id/myProfileFragment"
@@ -28,4 +31,13 @@
         android:name="com.example.drcomputer.fragments.EditProfile"
         android:label="fragment_edit_profile"
         tools:layout="@layout/fragment_edit_profile" />
+    <fragment
+        android:id="@+id/postUpload"
+        android:name="com.example.drcomputer.fragments.PostUpload"
+        android:label="fragment_post_upload"
+        tools:layout="@layout/fragment_post_upload" >
+        <action
+            android:id="@+id/action_postUpload_to_homePage"
+            app:destination="@id/homePage" />
+    </fragment>
 </navigation>

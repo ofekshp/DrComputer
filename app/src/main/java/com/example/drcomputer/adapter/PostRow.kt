@@ -14,6 +14,5 @@ class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     init {
         title= itemView.findViewById<TextView>(R.id.title)
         subtitle=itemView.findViewById<TextView>(R.id.subtitle)
-        imageView= itemView.findViewById<ImageView>(R.id.imageView)
     }
 }

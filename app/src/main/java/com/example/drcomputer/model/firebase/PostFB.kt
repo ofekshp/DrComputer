@@ -24,7 +24,7 @@ class PostFB {
             "ram" to post.ram,
             "uid" to post.uid,
         )
-        docRef.set(data)
+        db.collection("posts").document(post.uid).set(data)
             .addOnSuccessListener {
                 println("User uploaded successfully with PID: $post.pid")
                 callback(true)

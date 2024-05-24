@@ -39,7 +39,7 @@ class RegisterFragment : Fragment() {
                 Toast.makeText(context, "Something is missing", Toast.LENGTH_SHORT).show()
             }
             else {
-                val user = UserEntity("",userName,email)
+                val user = UserEntity("",userName,email,"")
                 registerUserViewModel.register(user,password){isSuccessful ->
                     if(isSuccessful)
                     {

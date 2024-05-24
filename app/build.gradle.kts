@@ -74,6 +74,7 @@ dependencies {
     implementation(libs.firebase.database)
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.volley)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -91,12 +92,8 @@ dependencies {
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-ktx:$room_version")
 
-//    implementation("com.google.dagger:hilt-android:2.44")
-//    annotationProcessor("com.google.dagger:hilt-android-compiler:2.44")
-//    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
-//    annotationProcessor ("androidx.room:room-compiler:2.6.1")
-//
-//    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation ("com.squareup.picasso:picasso:3.14.0")
+
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.7.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")

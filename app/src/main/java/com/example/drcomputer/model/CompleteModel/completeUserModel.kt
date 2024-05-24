@@ -16,7 +16,7 @@ class completeUserModel {
         firebaseModel.register(user,password) { isSuccessful ->
             if (isSuccessful) {
                 val uid = auth.currentUser?.uid
-                firebaseModel.userCollection(user.userName, user.email, uid.toString()) { isSuccess ->
+                firebaseModel.userCollection(user.userName, user.email, uid.toString(),"") { isSuccess ->
                     if(isSuccess)
                     {
                         GetDrComputer.getExecutorService().execute{

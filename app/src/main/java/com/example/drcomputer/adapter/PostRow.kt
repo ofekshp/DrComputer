@@ -6,7 +6,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
 
-class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MyPosts(itemView: View,adapter: MyPostsAdapter) : RecyclerView.ViewHolder(itemView) {
+
+
     var type: TextView?=null
     var cpu: TextView?=null
     var gpu: TextView?=null
@@ -22,5 +24,11 @@ class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         motherboard= itemView.findViewById<TextView>(R.id.motherboard)
         memory= itemView.findViewById<TextView>(R.id.memory)
         ram= itemView.findViewById<TextView>(R.id.ram)
+        itemView.setOnClickListener {
+            val position=absoluteAdapterPosition
+            if(position!=RecyclerView.NO_POSITION){
+                adapter.onClick(position)
+            }
+        }
     }
 }

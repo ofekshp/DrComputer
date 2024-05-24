@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import com.example.drcomputer.R
 import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.viewmodel.EditPostViewModel
@@ -21,7 +22,8 @@ class EditPost : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_edit_post, container, false)
         editPostViewModel = ViewModelProvider(this)[EditPostViewModel::class.java]
-
+        val args: EditPostArgs by navArgs()
+        val post = args.post
         val typeText: TextInputEditText = view.findViewById(R.id.typeUp)
         val cpuText: TextInputEditText = view.findViewById(R.id.cpuUp)
         val gpuText: TextInputEditText = view.findViewById(R.id.gpuUp)
@@ -31,18 +33,24 @@ class EditPost : Fragment() {
 
         view.findViewById<Button>(R.id.btn_saveEditPost)
             .setOnClickListener {
+
                 val type: String = typeText.text.toString()
                 val cpu: String = cpuText.text.toString()
                 val gpu: String = gpuText.text.toString()
                 val motherboard: String = motherboardText.text.toString()
                 val memory: String = memoryText.text.toString()
                 val ram: String = ramText.text.toString()
-
-                val post = arguments?.getSerializable("post") as PostEntity
+                post.type=type
+                post.cpu=cpu
+                post.gpu=gpu
+                post.motherboard=motherboard
+                post.memory=memory
+                post.ram=ram
+                //val post = arguments?.getSerializable("post") as PostEntity
                 if(validate(type,cpu,gpu,motherboard,memory,ram))
                 {
-                   val newPost = PostEntity(post.pid,type,cpu,gpu,motherboard,memory,ram,post.uid)
-                    editPostViewModel.editPost(newPost){success ->
+                   //val newPost = PostEntity(post.pid,type,cpu,gpu,motherboard,memory,ram,post.uid)
+                    editPostViewModel.editPost(post){success ->
                         if (success)
                             Toast.makeText(context, "New Post Save", Toast.LENGTH_SHORT).show()
                         else

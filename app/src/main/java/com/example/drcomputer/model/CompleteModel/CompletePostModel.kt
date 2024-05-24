@@ -5,8 +5,6 @@ import com.example.drcomputer.GetDrComputer
 import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.model.firebase.PostFB
 import com.example.drcomputer.model.room.PostRoom
-import com.example.drcomputer.model.room.PostModel
-import com.google.firebase.auth.FirebaseAuth
 import java.util.LinkedList
 
 

@@ -44,6 +44,8 @@ class MyPosts : Fragment() {
         postViewModel.userPosts.observe(viewLifecycleOwner) { posts ->
             val postsArrayList = ArrayList(posts)
             myAdapter.submitList(postsArrayList)
+            for(post in postsArrayList)
+                println(post)
         }
     }
     private fun fetchUserPosts() {

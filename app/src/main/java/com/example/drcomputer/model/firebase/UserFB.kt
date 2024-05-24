@@ -26,15 +26,17 @@ class UserFB {
         userName: String,
         email: String,
         uid: String,
+        profileImg:String,
         callback: (Boolean) -> Unit
     ) {
         val db = Firebase.firestore
         val data = hashMapOf(
             "userName" to userName,
             "email" to email,
-            "uid" to uid
+            "uid" to uid,
+            "profileImg" to profileImg
         )
-        db.collection("users").document().set(data)
+        db.collection("users").document(uid).set(data)
             .addOnSuccessListener {
                 println("User uploaded successfully with UID: $uid")
                 callback(true)
@@ -56,11 +58,13 @@ class UserFB {
                     val docResult = result.documents.first()
                     val name = docResult.getString("userName") ?: ""
                     val email = docResult.getString("email") ?: ""
+                    val profileImg = docResult.getString("profileImg") ?: ""
 
                     val userEntity = UserEntity(
                         userName = name,
                         uid = uid,
-                        email = email
+                        email = email,
+                        profileImg = profileImg
                     )
                     callback(userEntity)
                 } else {
@@ -85,6 +89,11 @@ class UserFB {
                     val docResult = result.documents.first()
                     var userName = docResult.getString("userName") ?: ""
                     var email = docResult.getString("email") ?: ""
+                    var profileImg = docResult.getString("profileImg") ?: ""
+
+                    if (profileImg != user.profileImg) {
+                        profileImg = user.profileImg
+                    }
 
                     if (userName != user.userName) {
                         userName = user.userName
@@ -122,7 +131,8 @@ class UserFB {
                     val updatedData = hashMapOf(
                         "userName" to userName,
                         "email" to email,
-                        "uid" to user.uid
+                        "uid" to user.uid,
+                        "profileImg" to profileImg
                     )
                     updateUserProfile(docResult.id, updatedData, callback)
                 }

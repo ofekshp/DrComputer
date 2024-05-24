@@ -21,7 +21,8 @@ import com.example.drcomputer.model.entities.UserEntity
 import com.example.drcomputer.viewmodel.EditProfileViewModel
 import com.example.drcomputer.viewmodel.ProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.storage.FirebaseStorage 
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 
 class EditProfile : Fragment() {
     private lateinit var auth: FirebaseAuth
@@ -49,6 +50,8 @@ class EditProfile : Fragment() {
         val userNameText: TextView = view.findViewById(R.id.userNameEd)
         val btnSave: Button = view.findViewById(R.id.btn_save)
         val changeImageBtn : Button = view.findViewById(R.id.edit_profile_img)
+        imageViewProfile = view.findViewById(R.id.edit_user_image)
+
 
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
@@ -108,7 +111,7 @@ class EditProfile : Fragment() {
                         .addOnSuccessListener { downloadUri ->
                             val imageUrl = downloadUri.toString()
                             imageUrlRef = imageUrl
-                            Picasso.with(context).load(imageUrl).into(imageViewProfile)
+                            Picasso.get().load(imageUrl).into(imageViewProfile)
                         }
                         .addOnFailureListener { e ->
                             // Handle download URL retrieval failure

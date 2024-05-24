@@ -24,7 +24,7 @@ class PostFB {
             "ram" to post.ram,
             "uid" to post.uid,
         )
-        docRef.set(data)
+        db.collection("posts").document(post.uid).set(data)
             .addOnSuccessListener {
                 println("User uploaded successfully with PID: $post.pid")
                 callback(true)
@@ -104,6 +104,7 @@ class PostFB {
                     for (document in result!!) {
                         val post=PostEntity(document.id,"", "", "", "", "", "", "")
                         post.fromMap(document.data)
+                        list.add(post)
 
                     }
                     callback(list)

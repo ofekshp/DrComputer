@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import com.example.drcomputer.model.entities.PostEntity
 
 @Dao
@@ -16,6 +17,8 @@ interface PostDao
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(post:PostEntity)
 
+    @Update
+    fun editPost(post: PostEntity)
 
     @Delete
     fun delete(post: PostEntity)

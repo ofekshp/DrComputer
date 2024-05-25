@@ -16,6 +16,7 @@ import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.viewmodel.GetPostsViewModel
 
 class homePage : Fragment() {
+
     private lateinit var postViewModel: GetPostsViewModel
     private lateinit var newRecyclerView: RecyclerView
     private lateinit var myAdapter: MyPostsAdapter
@@ -37,7 +38,7 @@ class homePage : Fragment() {
         newRecyclerView = view.findViewById(R.id.post_view)
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         newRecyclerView.setHasFixedSize(true)
-        myAdapter= MyPostsAdapter()
+        myAdapter= MyPostsAdapter(findNavController(),"HOME")
         newRecyclerView.adapter= myAdapter
         fetchUserPosts()
         observeUserPosts()

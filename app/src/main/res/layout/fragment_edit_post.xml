@@ -4,8 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.PostUpload">
+    tools:context=".fragments.EditPost">
 
+    <!-- TODO: Update blank fragment layout -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/InsideTopFrameLogin"
         android:layout_width="match_parent"
@@ -26,8 +27,9 @@
                 android:layout_height="wrap_content"
                 tools:layout="@layout/fragment_arrowback" />
         </LinearLayout>
+
         <LinearLayout
-            android:id="@+id/uploadFrame"
+            android:id="@+id/editPostFrame"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -37,14 +39,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:context=".fragments.PostUpload">
+            tools:context=".fragments.EditPost">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="25dp"
                 android:gravity="center"
-                android:text="Upload"
+                android:text="Edit Post"
                 android:textSize="25sp"
                 android:textStyle="bold" />
             <com.google.android.material.textfield.TextInputLayout
@@ -110,11 +112,11 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btn_upload"
+                android:id="@+id/btn_saveEditPost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:shadowColor="@color/my_primary"
-                android:text="Post"/>
+                android:text="Save"/>
 
 
         </LinearLayout>

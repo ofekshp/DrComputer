@@ -24,7 +24,7 @@ class PostFB {
             "ram" to post.ram,
             "uid" to post.uid,
         )
-        docRef.set(data)
+        db.collection("posts").document(post.uid).set(data)
             .addOnSuccessListener {
                 println("User uploaded successfully with PID: $post.pid")
                 callback(true)
@@ -34,6 +34,29 @@ class PostFB {
                 callback(false)
             }
     }
+
+    fun editPost(post: PostEntity, callback: (Boolean) -> Unit){
+        val db = Firebase.firestore
+        val postDocRef = db.collection("posts").document(post.pid)
+        val updatedPostData = hashMapOf(
+            "type" to post.type,
+            "cpu" to post.cpu,
+            "gpu" to post.gpu,
+            "motherboard" to post.motherboard,
+            "memory" to post.memory,
+            "ram" to post.ram
+        )
+        postDocRef.update(updatedPostData as Map<String, Any>)
+            .addOnSuccessListener {
+                println("Post updated successfully")
+                callback(true)
+            }
+            .addOnFailureListener{e->
+                println("Error updating post: ${e.message}")
+                callback(false)
+            }
+    }
+
     fun deletePostFromFirebase(post: PostEntity, callback: (Boolean) -> Unit) {
         val id = post.pid
         db.collection("posts").document(id)

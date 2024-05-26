@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
@@ -27,7 +28,6 @@ class EditProfile : Fragment() {
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var editProfileViewModel: EditProfileViewModel
     private lateinit var imageViewProfile: ImageView
-    //private lateinit var imageUrlRef : String
     private var imageUrlRef:String = ""
     private var imageUri: Uri? = null
     private val imagePicker = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
@@ -37,6 +37,8 @@ class EditProfile : Fragment() {
             uploadImage()
         }
     }
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,6 +52,7 @@ class EditProfile : Fragment() {
         val btnSave: Button = view.findViewById(R.id.btn_save)
         val changeImageBtn : Button = view.findViewById(R.id.edit_profile_img)
         imageViewProfile = view.findViewById(R.id.edit_user_image)
+        progressBar = view.findViewById(R.id.progressBar)
 
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
@@ -58,12 +61,14 @@ class EditProfile : Fragment() {
         var password: String
         var userName: String
 
+        progressBar.visibility = View.VISIBLE
         profileViewModel.getUserByUid(uid){ userEntity ->
             if(userEntity!=null){
                 userNameText.text= userEntity.userName
                 emailText.text= userEntity.email
                 if (userEntity.profileImg.isNotEmpty())
                     Picasso.get().load(userEntity.profileImg).into(imageViewProfile)
+                progressBar.visibility = View.GONE
             }
         }
 
@@ -102,6 +107,8 @@ class EditProfile : Fragment() {
     private fun uploadImage() {
         imageUri?.let {
             val storageReference = FirebaseStorage.getInstance().reference.child("profile_images/${System.currentTimeMillis()}.jpg")
+            progressBar.visibility = View.VISIBLE
+
             storageReference.putFile(it)
                 .addOnSuccessListener {
                     // Image uploaded successfully
@@ -113,6 +120,7 @@ class EditProfile : Fragment() {
                             val imageUrl = downloadUri.toString()
                             imageUrlRef = imageUrl
                             Picasso.get().load(imageUrl).into(imageViewProfile)
+                            progressBar.visibility = View.GONE
                         }
                         .addOnFailureListener { e ->
                             // Handle download URL retrieval failure

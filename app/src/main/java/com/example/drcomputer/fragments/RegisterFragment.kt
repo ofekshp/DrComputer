@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -17,6 +18,8 @@ import com.google.android.material.textfield.TextInputEditText
 
 class RegisterFragment : Fragment() {
     private lateinit var registerUserViewModel: RegisterUserViewModel
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,6 +30,7 @@ class RegisterFragment : Fragment() {
         val userNameText: TextInputEditText = view.findViewById(R.id.userNameReg)
         val btnReg: Button = view.findViewById(R.id.btn_register)
         registerUserViewModel = ViewModelProvider(this)[RegisterUserViewModel::class.java]
+        progressBar = view.findViewById(R.id.progressBar)
 
         btnReg.setOnClickListener {
             val email: String
@@ -40,9 +44,11 @@ class RegisterFragment : Fragment() {
             }
             else {
                 val user = UserEntity("",userName,email,"")
+                progressBar.visibility = View.VISIBLE
                 registerUserViewModel.register(user,password){isSuccessful ->
                     if(isSuccessful)
                     {
+                        progressBar.visibility = View.GONE
                         Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
                         val submitActivityIntent = Intent(context, MainActivity::class.java)
                         startActivity(submitActivityIntent)

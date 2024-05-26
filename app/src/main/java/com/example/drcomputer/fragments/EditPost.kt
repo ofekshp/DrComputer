@@ -40,12 +40,12 @@ class EditPost : Fragment() {
 
         view.findViewById<Button>(R.id.btn_saveEditPost)
             .setOnClickListener {
-                var type: String = typeText.text.toString()
-                var cpu: String = cpuText.text.toString()
-                var gpu: String = gpuText.text.toString()
-                var motherboard: String = motherboardText.text.toString()
-                var memory: String = memoryText.text.toString()
-                var ram: String = ramText.text.toString()
+                val type: String = typeText.text.toString()
+                val cpu: String = cpuText.text.toString()
+                val gpu: String = gpuText.text.toString()
+                val motherboard: String = motherboardText.text.toString()
+                val memory: String = memoryText.text.toString()
+                val ram: String = ramText.text.toString()
 
                 post.type=type
                 post.cpu=cpu

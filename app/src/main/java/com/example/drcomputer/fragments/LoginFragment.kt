@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.drcomputer.R
@@ -15,6 +16,8 @@ import com.google.firebase.auth.FirebaseAuth
 
 class LoginFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,6 +27,8 @@ class LoginFragment : Fragment() {
         val emailText: TextInputEditText = view.findViewById(R.id.emailLog)
         val passwordText: TextInputEditText = view.findViewById(R.id.passwordLog)
         val btnLog: Button = view.findViewById(R.id.btn_login)
+        progressBar = view.findViewById(R.id.progressBar)
+
         auth = FirebaseAuth.getInstance()
         btnLog.setOnClickListener{
             val email: String
@@ -35,9 +40,11 @@ class LoginFragment : Fragment() {
                 Toast.makeText(context, "Something is missing", Toast.LENGTH_SHORT).show()
             }
             else {
+                progressBar.visibility = View.VISIBLE
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
+                            progressBar.visibility = View.GONE
                             Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
                             val submitActivityIntent = Intent(context, MainActivity::class.java)
                             startActivity(submitActivityIntent)

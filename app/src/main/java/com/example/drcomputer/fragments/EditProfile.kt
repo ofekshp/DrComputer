@@ -68,8 +68,10 @@ class EditProfile : Fragment() {
             if(userEntity!=null){
                 userNameText.text= userEntity.userName
                 emailText.text= userEntity.email
-                if (userEntity.profileImg.isNotEmpty())
+                if (userEntity.profileImg.isNotEmpty()) {
                     Picasso.get().load(userEntity.profileImg).into(imageViewProfile)
+                    imageUrlRef = userEntity.profileImg
+                }
                 progressBar.visibility = View.GONE
             }
         }
@@ -93,7 +95,7 @@ class EditProfile : Fragment() {
                     if (success) {
                         Toast.makeText(context, "New Profile Save", Toast.LENGTH_SHORT).show()
                         progressBar2.visibility = View.GONE
-                        findNavController().navigate(R.id.action_editProfile_to_myProfileFragment)
+                        findNavController().popBackStack()
                     }
                     else
                         Toast.makeText(context, "something went wrong, try again", Toast.LENGTH_SHORT).show()

@@ -1,6 +1,5 @@
 package com.example.drcomputer.fragments
 
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
 import android.util.Patterns
@@ -14,8 +13,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.android.volley.toolbox.ImageRequest
-import com.android.volley.toolbox.Volley
+import androidx.navigation.fragment.findNavController
 import com.example.drcomputer.R
 import com.example.drcomputer.model.entities.UserEntity
 import com.example.drcomputer.viewmodel.EditProfileViewModel
@@ -29,7 +27,8 @@ class EditProfile : Fragment() {
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var editProfileViewModel: EditProfileViewModel
     private lateinit var imageViewProfile: ImageView
-    private lateinit var imageUrlRef : String
+    //private lateinit var imageUrlRef : String
+    private var imageUrlRef:String = ""
     private var imageUri: Uri? = null
     private val imagePicker = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         uri?.let {
@@ -52,7 +51,6 @@ class EditProfile : Fragment() {
         val changeImageBtn : Button = view.findViewById(R.id.edit_profile_img)
         imageViewProfile = view.findViewById(R.id.edit_user_image)
 
-
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
         val uid = currentUser!!.uid
@@ -64,6 +62,8 @@ class EditProfile : Fragment() {
             if(userEntity!=null){
                 userNameText.text= userEntity.userName
                 emailText.text= userEntity.email
+                if (userEntity.profileImg.isNotEmpty())
+                    Picasso.get().load(userEntity.profileImg).into(imageViewProfile)
             }
         }
 
@@ -75,16 +75,17 @@ class EditProfile : Fragment() {
             email = emailText.text.toString()
             password = passwordText.text.toString()
             userName = userNameText.text.toString()
-            val imageUrl = imageUrlRef
             if(!isValidEmail(email)) {
                 Toast.makeText(context, "Please enter a valid email address", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
             }
             else {
-                val user = UserEntity(uid, userName, email,imageUrl)
+                val user = UserEntity(uid, userName, email,imageUrlRef)
                 editProfileViewModel.editProfile(user, password) { success ->
-                    if (success)
+                    if (success) {
                         Toast.makeText(context, "New Profile Save", Toast.LENGTH_SHORT).show()
+                        findNavController().navigate(R.id.action_editProfile_to_myProfileFragment)
+                    }
                     else
                         Toast.makeText(context, "something went wrong, try again", Toast.LENGTH_SHORT).show()
                 }

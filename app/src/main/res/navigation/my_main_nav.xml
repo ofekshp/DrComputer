@@ -41,7 +41,11 @@
         android:id="@+id/editProfile"
         android:name="com.example.drcomputer.fragments.EditProfile"
         android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile" />
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfile_to_myProfileFragment"
+            app:destination="@id/myProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/postUpload"
         android:name="com.example.drcomputer.fragments.PostUpload"

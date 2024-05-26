@@ -1,5 +1,6 @@
 package com.example.drcomputer.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.drcomputer.R
+import com.example.drcomputer.activities.AuthActivity
 import com.example.drcomputer.viewmodel.ProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
 
@@ -28,6 +30,7 @@ class ProfileFragment : Fragment() {
         val uid = currentUser!!.uid
         val userNameText: TextView = view.findViewById(R.id.userNameProfile)
         val emailText: TextView = view.findViewById(R.id.emailProfile)
+        val btnLogOut: Button = view.findViewById(R.id.btn_logout)
 
         profileViewModel.getUserByUid(uid){ userEntity ->
             if(userEntity!=null){
@@ -42,6 +45,11 @@ class ProfileFragment : Fragment() {
         val myPostsBtn=view.findViewById<Button>(R.id.btn_myPost)
         myPostsBtn.setOnClickListener{
             findNavController().navigate(R.id.action_myProfileFragment_to_myPosts)
+        }
+        btnLogOut.setOnClickListener{
+            auth.signOut()
+            val submitActivityIntent = Intent(context, AuthActivity::class.java)
+            startActivity(submitActivityIntent)
         }
         return view
     }

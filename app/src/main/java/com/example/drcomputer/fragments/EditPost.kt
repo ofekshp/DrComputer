@@ -64,7 +64,7 @@ class EditPost : Fragment() {
                         if (success) {
                             Toast.makeText(context, "New Post Save", Toast.LENGTH_SHORT).show()
                             progressBar.visibility = View.GONE
-                            findNavController().navigate(R.id.action_editPost_to_myPosts)
+                            findNavController().popBackStack()
                         }
                         else
                             Toast.makeText(context, "something went wrong, try again", Toast.LENGTH_SHORT).show()

@@ -50,6 +50,40 @@
                 android:text="Edit Profile"
                 android:textSize="25sp"
                 android:textStyle="bold" />
+
+            <!-- Image Profile -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/edit_profile_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@android:drawable/ic_menu_camera"
+                    android:text="Change Image" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="104dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp">
+
+                    <!-- User Image -->
+                    <ImageView
+                        android:id="@+id/edit_user_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/default_img_profile"
+                        app:layout_constraintDimensionRatio="H, 1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+            <!-- Image Profile -->
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

@@ -1,19 +1,16 @@
 package com.example.drcomputer.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.drcomputer.R
-import com.example.drcomputer.activities.AuthActivity
-import com.example.drcomputer.model.CompleteModel.CompletePostModel
 import com.example.drcomputer.model.entities.PostEntity
-import com.example.drcomputer.viewmodel.RegisterUserViewModel
 import com.example.drcomputer.viewmodel.UploadPostViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
@@ -36,7 +33,7 @@ private lateinit var auth:FirebaseAuth
         val ramText: TextInputEditText = view.findViewById(R.id.ramUp)
         auth=FirebaseAuth.getInstance()
 
-        val buttonUpload=view.findViewById<Button>(R.id.btn_upload)
+        view.findViewById<Button>(R.id.btn_upload)
             .setOnClickListener{
             val type: String=typeText.text.toString()
             val cpu: String=cpuText.text.toString()
@@ -58,12 +55,9 @@ private lateinit var auth:FirebaseAuth
                             findNavController().popBackStack()
                         }
                         else
-                        {
                             Toast.makeText(context, "Upload failed", Toast.LENGTH_SHORT).show()
-                        }
                     }
                 }
-
             }
             else
             {
@@ -84,8 +78,6 @@ private lateinit var auth:FirebaseAuth
         val isMotherboardValid = motherboard.isNotEmpty()
         val isMemoryValid = memory.isNotEmpty()
         val isRamValid = ram.isNotEmpty()
-
-
 
         return isTypeValid && isCpuValid && isGpuValid  && isMotherboardValid && isMemoryValid && isRamValid
     }

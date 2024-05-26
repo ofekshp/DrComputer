@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
 import com.example.drcomputer.adapter.MyPostsAdapter
+import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.viewmodel.GetPostsViewModel
 import com.google.firebase.auth.FirebaseAuth
 
@@ -28,7 +30,7 @@ class MyPosts : Fragment() {
         val view = inflater.inflate(R.layout.fragment_my_posts, container, false)
         postViewModel= ViewModelProvider(this)[GetPostsViewModel::class.java]
         newRecyclerView = view.findViewById(R.id.my_posts)
-        myAdapter= MyPostsAdapter()
+        myAdapter= MyPostsAdapter(findNavController(),"MY_POSTS")
 
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         newRecyclerView.setHasFixedSize(true)
@@ -44,10 +46,13 @@ class MyPosts : Fragment() {
         postViewModel.userPosts.observe(viewLifecycleOwner) { posts ->
             val postsArrayList = ArrayList(posts)
             myAdapter.submitList(postsArrayList)
+            for(post in postsArrayList)
+                println(post)
         }
     }
     private fun fetchUserPosts() {
         // Call the getUserPosts function to start observing the LiveData
         postViewModel.getMyPosts(uid.toString())
     }
+
 }

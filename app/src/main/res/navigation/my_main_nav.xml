@@ -16,6 +16,14 @@
         <action
             android:id="@+id/action_homePage_to_postUpload"
             app:destination="@id/postUpload" />
+        <action
+            android:id="@+id/action_homePage_to_editPost"
+            app:destination="@id/editPost">
+            <argument
+                android:name="post"
+                app:argType="com.example.drcomputer.model.entities.PostEntity"
+                />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/myProfileFragment"
@@ -33,7 +41,11 @@
         android:id="@+id/editProfile"
         android:name="com.example.drcomputer.fragments.EditProfile"
         android:label="fragment_edit_profile"
-        tools:layout="@layout/fragment_edit_profile" />
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfile_to_myProfileFragment"
+            app:destination="@id/myProfileFragment" />
+    </fragment>
     <fragment
         android:id="@+id/postUpload"
         android:name="com.example.drcomputer.fragments.PostUpload"
@@ -47,5 +59,23 @@
         android:id="@+id/myPosts"
         android:name="com.example.drcomputer.fragments.MyPosts"
         android:label="fragment_my_posts"
-        tools:layout="@layout/fragment_my_posts" />
+        tools:layout="@layout/fragment_my_posts" >
+        <action
+            android:id="@+id/action_myPosts_to_editPost"
+            app:destination="@id/editPost" >
+            <argument
+                android:name="post"
+                app:argType="com.example.drcomputer.model.entities.PostEntity"
+                />
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/editPost"
+        android:name="com.example.drcomputer.fragments.EditPost"
+        android:label="fragment_edit_post"
+        tools:layout="@layout/fragment_edit_post">
+        <argument
+            android:name="post"
+            app:argType="com.example.drcomputer.model.entities.PostEntity" />
+    </fragment>
 </navigation>

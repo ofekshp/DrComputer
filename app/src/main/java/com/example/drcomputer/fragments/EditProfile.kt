@@ -38,6 +38,7 @@ class EditProfile : Fragment() {
         }
     }
     private lateinit var progressBar: ProgressBar
+    private lateinit var progressBar2: ProgressBar
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,6 +54,7 @@ class EditProfile : Fragment() {
         val changeImageBtn : Button = view.findViewById(R.id.edit_profile_img)
         imageViewProfile = view.findViewById(R.id.edit_user_image)
         progressBar = view.findViewById(R.id.progressBar)
+        progressBar2 = view.findViewById(R.id.progressBar2)
 
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
@@ -86,9 +88,11 @@ class EditProfile : Fragment() {
             }
             else {
                 val user = UserEntity(uid, userName, email,imageUrlRef)
+                progressBar2.visibility = View.VISIBLE
                 editProfileViewModel.editProfile(user, password) { success ->
                     if (success) {
                         Toast.makeText(context, "New Profile Save", Toast.LENGTH_SHORT).show()
+                        progressBar2.visibility = View.GONE
                         findNavController().navigate(R.id.action_editProfile_to_myProfileFragment)
                     }
                     else

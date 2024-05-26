@@ -122,6 +122,12 @@
                     android:hint="@string/password" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
             <Button
                 android:id="@+id/btn_save"
                 android:layout_width="wrap_content"

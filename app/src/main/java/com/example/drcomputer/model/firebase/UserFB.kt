@@ -93,6 +93,8 @@ class UserFB {
 
                     if (profileImg != user.profileImg) {
                         profileImg = user.profileImg
+                        db.collection("users").document(user.uid)
+                            .update("profileImg", profileImg)
                     }
 
                     if (userName != user.userName) {

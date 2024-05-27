@@ -5,54 +5,67 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.navArgs
+import androidx.navigation.fragment.findNavController
 import com.example.drcomputer.R
 import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.viewmodel.EditPostViewModel
-import com.google.android.material.textfield.TextInputEditText
 
 class EditPost : Fragment() {
     private lateinit var editPostViewModel: EditPostViewModel
+    private lateinit var progressBar: ProgressBar
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_edit_post, container, false)
         editPostViewModel = ViewModelProvider(this)[EditPostViewModel::class.java]
-        val args: EditPostArgs by navArgs()
-        val post = args.post
-        val typeText: TextInputEditText = view.findViewById(R.id.typeUp)
-        val cpuText: TextInputEditText = view.findViewById(R.id.cpuUp)
-        val gpuText: TextInputEditText = view.findViewById(R.id.gpuUp)
-        val motherboardText: TextInputEditText = view.findViewById(R.id.motherboardUp)
-        val memoryText: TextInputEditText = view.findViewById(R.id.memoryUp)
-        val ramText: TextInputEditText = view.findViewById(R.id.ramUp)
+        progressBar = view.findViewById(R.id.progressBar)
+        val post:PostEntity = arguments?.getSerializable("post") as PostEntity
+        val typeText: TextView = view.findViewById(R.id.typeUp)
+        val cpuText: TextView = view.findViewById(R.id.cpuUp)
+        val gpuText: TextView = view.findViewById(R.id.gpuUp)
+        val motherboardText: TextView = view.findViewById(R.id.motherboardUp)
+        val memoryText: TextView = view.findViewById(R.id.memoryUp)
+        val ramText: TextView = view.findViewById(R.id.ramUp)
+
+        typeText.text = post.type
+        cpuText.text = post.cpu
+        gpuText.text = post.gpu
+        motherboardText.text = post.motherboard
+        memoryText.text = post.memory
+        ramText.text = post.ram
 
         view.findViewById<Button>(R.id.btn_saveEditPost)
             .setOnClickListener {
-
+                progressBar.visibility = View.VISIBLE
                 val type: String = typeText.text.toString()
                 val cpu: String = cpuText.text.toString()
                 val gpu: String = gpuText.text.toString()
                 val motherboard: String = motherboardText.text.toString()
                 val memory: String = memoryText.text.toString()
                 val ram: String = ramText.text.toString()
+
                 post.type=type
                 post.cpu=cpu
                 post.gpu=gpu
                 post.motherboard=motherboard
                 post.memory=memory
                 post.ram=ram
-                //val post = arguments?.getSerializable("post") as PostEntity
+
                 if(validate(type,cpu,gpu,motherboard,memory,ram))
                 {
-                   //val newPost = PostEntity(post.pid,type,cpu,gpu,motherboard,memory,ram,post.uid)
                     editPostViewModel.editPost(post){success ->
-                        if (success)
+                        if (success) {
                             Toast.makeText(context, "New Post Save", Toast.LENGTH_SHORT).show()
+                            progressBar.visibility = View.GONE
+                            findNavController().popBackStack()
+                        }
                         else
                             Toast.makeText(context, "something went wrong, try again", Toast.LENGTH_SHORT).show()
                     }

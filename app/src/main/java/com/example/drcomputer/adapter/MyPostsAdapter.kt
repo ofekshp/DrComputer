@@ -1,10 +1,11 @@
 package com.example.drcomputer.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.NavController
-import androidx.navigation.fragment.NavHostFragment.Companion.findNavController
 
 
 import androidx.recyclerview.widget.RecyclerView
@@ -12,10 +13,18 @@ import com.example.drcomputer.R
 import com.example.drcomputer.fragments.MyPostsDirections
 import com.example.drcomputer.fragments.homePageDirections
 import com.example.drcomputer.model.entities.PostEntity
+import com.google.firebase.auth.FirebaseAuth
 
 
-class MyPostsAdapter(  private val navController: NavController, private val contextType: String) : RecyclerView.Adapter<MyPosts>()
+
+
+class MyPostsAdapter(
+    private val navController: NavController,
+    private val contextType: String,
+    private val context: Context?
+) : RecyclerView.Adapter<MyPosts>()
 {
+    private var auth=FirebaseAuth.getInstance()
     private var posts = arrayListOf<PostEntity>()
     private var listener:OnItemClickListener?=null
     fun setOnItemClickListener(listener:OnItemClickListener)
@@ -52,7 +61,10 @@ class MyPostsAdapter(  private val navController: NavController, private val con
                 "MY_POSTS" -> MyPostsDirections.actionMyPostsToEditPost(post)
                 else -> throw IllegalArgumentException("Unknown context type")
             }
-            navController.navigate(action)
+            if(post.uid.equals(auth.currentUser!!.uid))
+                navController.navigate(action)
+            else
+                Toast.makeText(context, "Can't edit a post that isn't yours", Toast.LENGTH_SHORT).show()
         }
     }
 

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.drcomputer.R
+import com.google.firebase.auth.FirebaseAuth
 
 class AuthActivity : AppCompatActivity() {
 
@@ -11,12 +12,23 @@ class AuthActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auth)
 
-        val navHostFragment = supportFragmentManager
-            .findFragmentById(R.id.authNav) as NavHostFragment
-        navController = navHostFragment.navController
+        val currentUser = FirebaseAuth.getInstance().currentUser
 
+        if (currentUser != null)
+        {
+            setContentView(R.layout.activity_main)
+            val navHostFragment = supportFragmentManager
+                .findFragmentById(R.id.mainNav) as NavHostFragment
+            navController = navHostFragment.navController
+        }
+        else {
+            setContentView(R.layout.activity_auth)
+            val navHostFragment = supportFragmentManager
+                .findFragmentById(R.id.authNav) as NavHostFragment
+            navController = navHostFragment.navController
+
+        }
     }
 
 }

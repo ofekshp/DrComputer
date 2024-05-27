@@ -17,13 +17,8 @@
             android:id="@+id/action_homePage_to_postUpload"
             app:destination="@id/postUpload" />
         <action
-            android:id="@+id/action_homePage_to_editPost"
-            app:destination="@id/editPost">
-            <argument
-                android:name="post"
-                app:argType="com.example.drcomputer.model.entities.PostEntity"
-                />
-        </action>
+            android:id="@+id/action_homePage_to_fullSizePost"
+            app:destination="@id/fullSizePost" />
     </fragment>
     <fragment
         android:id="@+id/myProfileFragment"
@@ -80,5 +75,14 @@
         <action
             android:id="@+id/action_editPost_to_myPosts"
             app:destination="@id/myPosts" />
+    </fragment>
+    <fragment
+        android:id="@+id/fullSizePost"
+        android:name="com.example.drcomputer.fragments.FullSizePost"
+        android:label="fragment_full_size_post"
+        tools:layout="@layout/fragment_full_size_post">
+        <argument
+            android:name="post"
+            app:argType="com.example.drcomputer.model.entities.PostEntity" />
     </fragment>
 </navigation>

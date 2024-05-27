@@ -20,7 +20,8 @@
             android:id="@+id/backArrow"
             android:name="com.example.drcomputer.fragments.arrowBack"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:layout="@layout/fragment_arrowback" />
     </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -79,7 +80,8 @@
                     android:id="@+id/passwordReg"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/password" />
+                    android:hint="@string/password"
+                    android:inputType="textPassword"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <ProgressBar

@@ -38,7 +38,7 @@ class homePage : Fragment() {
         newRecyclerView = view.findViewById(R.id.post_view)
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         newRecyclerView.setHasFixedSize(true)
-        myAdapter= MyPostsAdapter(findNavController(),"HOME")
+        myAdapter= MyPostsAdapter(findNavController(),"HOME",context)
         newRecyclerView.adapter= myAdapter
         fetchUserPosts()
         observeUserPosts()

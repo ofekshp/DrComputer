@@ -13,10 +13,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.drcomputer.R
 import com.example.drcomputer.model.entities.PostEntity
+import com.example.drcomputer.viewmodel.DeletePostViewModel
 import com.example.drcomputer.viewmodel.EditPostViewModel
 
 class EditPost : Fragment() {
     private lateinit var editPostViewModel: EditPostViewModel
+    private lateinit var deletePostViewMode: DeletePostViewModel
     private lateinit var progressBar: ProgressBar
 
     override fun onCreateView(
@@ -25,6 +27,7 @@ class EditPost : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_edit_post, container, false)
         editPostViewModel = ViewModelProvider(this)[EditPostViewModel::class.java]
+        deletePostViewMode=ViewModelProvider(this)[DeletePostViewModel::class.java]
         progressBar = view.findViewById(R.id.progressBar)
         val post:PostEntity = arguments?.getSerializable("post") as PostEntity
         val typeText: TextView = view.findViewById(R.id.typeUp)
@@ -40,6 +43,20 @@ class EditPost : Fragment() {
         motherboardText.text = post.motherboard
         memoryText.text = post.memory
         ramText.text = post.ram
+
+
+        view.findViewById<Button>(R.id.btn_deletePost)
+            .setOnClickListener{
+                deletePostViewMode.deletePost(post){success->
+                    if(success){
+                        Toast.makeText(context, "Deleted successful", Toast.LENGTH_SHORT).show()
+                        findNavController().popBackStack()
+                    }
+                    else{
+                        Toast.makeText(context, "Sorry couldn't delete post", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
 
         view.findViewById<Button>(R.id.btn_saveEditPost)
             .setOnClickListener {

@@ -124,6 +124,13 @@
                 android:shadowColor="@color/my_primary"
                 android:text="Save"/>
 
+            <Button
+                android:id="@+id/btn_deletePost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/design_default_color_error"
+                android:text="Delete" />
+
 
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

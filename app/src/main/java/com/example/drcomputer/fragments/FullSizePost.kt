@@ -5,25 +5,47 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
+import com.example.drcomputer.model.entities.PostEntity
+import com.example.drcomputer.viewmodel.EditPostViewModel
+import com.example.drcomputer.viewmodel.ProfileViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [FullSizePost.newInstance] factory method to
- * create an instance of this fragment.
- */
 class FullSizePost : Fragment() {
+    private lateinit var profileViewModel: ProfileViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    ): View?
+    {
+
+
         val view = inflater.inflate(R.layout.fragment_full_size_post, container, false)
+        val post: PostEntity = arguments?.getSerializable("post") as PostEntity
+        var type= view.findViewById<TextView>(R.id.type)
+        var cpu=view.findViewById<TextView>(R.id.cpu)
+        var gpu= view.findViewById<TextView>(R.id.gpu)
+        var motherboard= view.findViewById<TextView>(R.id.motherboard)
+        var memory= view.findViewById<TextView>(R.id.memory)
+        var ram= view.findViewById<TextView>(R.id.ram)
+        var uid=view.findViewById<TextView>(R.id.uid)
+        profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
+        profileViewModel.getUserByUid(post.uid){ userEntity ->
+            if(userEntity!=null){
+                uid.text= userEntity.userName
+            }
+            else{
+                uid.text="Error404"
+            }
+        }
+        type.text="type: "+post.type
+        cpu.text="cpu: "+post.cpu
+        gpu.text="gpu: "+post.gpu
+        motherboard.text="motherboard: "+post.motherboard
+        memory.text="memory: "+post.memory
+        ram.text="ram: "+post.ram
         return view
     }
 

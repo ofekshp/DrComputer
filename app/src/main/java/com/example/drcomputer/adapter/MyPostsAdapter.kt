@@ -56,15 +56,12 @@ class MyPostsAdapter(
         listener?.onItemClick(post)
         holder.itemView.setOnClickListener {
             val action = when (contextType) {
-                //TODO change direction from homepage
-                "HOME" -> homePageDirections.actionHomePageToEditPost(post)
+                //TODO change direction from homepage to large post view
+                "HOME" -> homePageDirections.actionHomePageToFullSizePost(post)
                 "MY_POSTS" -> MyPostsDirections.actionMyPostsToEditPost(post)
                 else -> throw IllegalArgumentException("Unknown context type")
             }
-            if(post.uid.equals(auth.currentUser!!.uid))
                 navController.navigate(action)
-            else
-                Toast.makeText(context, "Can't edit a post that isn't yours", Toast.LENGTH_SHORT).show()
         }
     }
 

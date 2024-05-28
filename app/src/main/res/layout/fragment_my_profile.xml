@@ -51,6 +51,21 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
+            <ImageView
+                android:id="@+id/user_image"
+                android:layout_width="175dp"
+                android:layout_height="165dp"
+                android:src="@drawable/default_img_profile"
+                app:layout_constraintDimensionRatio="H, 1:1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

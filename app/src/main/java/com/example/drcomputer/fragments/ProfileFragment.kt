@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +16,7 @@ import com.example.drcomputer.R
 import com.example.drcomputer.activities.AuthActivity
 import com.example.drcomputer.viewmodel.ProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
+import com.squareup.picasso.Picasso
 
 // TODO: Finish build profile fragment !!
 class ProfileFragment : Fragment() {
@@ -31,11 +34,18 @@ class ProfileFragment : Fragment() {
         val userNameText: TextView = view.findViewById(R.id.userNameProfile)
         val emailText: TextView = view.findViewById(R.id.emailProfile)
         val btnLogOut: Button = view.findViewById(R.id.btn_logout)
+        val imageViewProfile:ImageView = view.findViewById(R.id.user_image)
+        val progressBar:ProgressBar = view.findViewById(R.id.progressBar)
 
+        progressBar.visibility = View.VISIBLE
         profileViewModel.getUserByUid(uid){ userEntity ->
             if(userEntity!=null){
                 userNameText.text= userEntity.userName
                 emailText.text= userEntity.email
+                if (userEntity.profileImg.isNotEmpty()) {
+                    Picasso.get().load(userEntity.profileImg).into(imageViewProfile)
+                }
+                progressBar.visibility = View.GONE
             }
         }
         val editProfileBtn=view.findViewById<Button>(R.id.btn_edit)

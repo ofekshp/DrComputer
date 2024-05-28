@@ -1,6 +1,7 @@
 package com.example.drcomputer.fragments
 
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.util.Patterns
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -25,6 +27,7 @@ import com.squareup.picasso.Picasso
 
 class EditProfile : Fragment() {
     private lateinit var auth: FirebaseAuth
+    private lateinit var btnSave: Button
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var editProfileViewModel: EditProfileViewModel
     private lateinit var imageViewProfile: ImageView
@@ -40,6 +43,7 @@ class EditProfile : Fragment() {
     private lateinit var progressBar: ProgressBar
     private lateinit var progressBar2: ProgressBar
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -50,8 +54,9 @@ class EditProfile : Fragment() {
         val emailText: TextView = view.findViewById(R.id.emailEd)
         val passwordText: TextView = view.findViewById(R.id.passwordEd)
         val userNameText: TextView = view.findViewById(R.id.userNameEd)
-        val btnSave: Button = view.findViewById(R.id.btn_save)
+        btnSave = view.findViewById(R.id.btn_save)
         val changeImageBtn : Button = view.findViewById(R.id.edit_profile_img)
+        val deleteImageBtn : Button = view.findViewById(R.id.delete_profile_img)
         imageViewProfile = view.findViewById(R.id.edit_user_image)
         progressBar = view.findViewById(R.id.progressBar)
         progressBar2 = view.findViewById(R.id.progressBar2)
@@ -78,6 +83,11 @@ class EditProfile : Fragment() {
 
         changeImageBtn.setOnClickListener{
             imagePicker.launch("image/*")
+        }
+
+        deleteImageBtn.setOnClickListener{
+            Picasso.get().load(R.drawable.default_img_profile).into(imageViewProfile)
+            imageUrlRef = ""
         }
 
         btnSave.setOnClickListener {
@@ -114,7 +124,7 @@ class EditProfile : Fragment() {
         imageUri?.let {
             val storageReference = FirebaseStorage.getInstance().reference.child("profile_images/${System.currentTimeMillis()}.jpg")
             progressBar.visibility = View.VISIBLE
-
+            btnSave.isClickable = false
             storageReference.putFile(it)
                 .addOnSuccessListener {
                     // Image uploaded successfully
@@ -127,6 +137,7 @@ class EditProfile : Fragment() {
                             imageUrlRef = imageUrl
                             Picasso.get().load(imageUrl).into(imageViewProfile)
                             progressBar.visibility = View.GONE
+                            btnSave.isClickable = true
                         }
                         .addOnFailureListener { e ->
                             // Handle download URL retrieval failure

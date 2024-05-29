@@ -1,12 +1,14 @@
 package com.example.drcomputer.fragments
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -40,7 +42,7 @@ class RegisterFragment : Fragment() {
             password = passwordText.text.toString()
             userName = userNameText.text.toString()
             if (email.isNullOrEmpty() || password.isNullOrEmpty() || userName.isNullOrEmpty()) {
-                Toast.makeText(context, "Something is missing", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Something is missing", Toast.LENGTH_LONG).show()
             }
             else {
                 val user = UserEntity("",userName,email,"")
@@ -49,12 +51,19 @@ class RegisterFragment : Fragment() {
                     if(isSuccessful)
                     {
                         progressBar.visibility = View.GONE
-                        Toast.makeText(context, "Register Success", Toast.LENGTH_SHORT).show()
+                        val msg:String = "Register Success"
+                        val toast = Toast.makeText(context,msg , Toast.LENGTH_SHORT)
+                        val view = toast.view
+                        val text: TextView? = view?.findViewById(android.R.id.message)
+                        text?.setTextColor(Color.RED)
+                        toast.show()
                         val submitActivityIntent = Intent(context, MainActivity::class.java)
                         startActivity(submitActivityIntent)
                     }
-                    else
-                        Toast.makeText(context, "Register Failed", Toast.LENGTH_SHORT).show()
+                    else {
+                        Toast.makeText(context, "Register Failed", Toast.LENGTH_LONG).show()
+                        progressBar.visibility = View.GONE
+                    }
                 }
             }
         }

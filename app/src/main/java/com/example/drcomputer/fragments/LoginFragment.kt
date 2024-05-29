@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
             password = passwordText.text.toString()
 
             if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
-                Toast.makeText(context, "Something is missing", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Something is missing", Toast.LENGTH_LONG).show()
             }
             else {
                 progressBar.visibility = View.VISIBLE
@@ -49,7 +49,8 @@ class LoginFragment : Fragment() {
                             val submitActivityIntent = Intent(context, MainActivity::class.java)
                             startActivity(submitActivityIntent)
                         } else {
-                            Toast.makeText(context, "Login Failed", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(context, "Login Failed", Toast.LENGTH_LONG).show()
+                            progressBar.visibility = View.GONE
                         }
                     }
             }

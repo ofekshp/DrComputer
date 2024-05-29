@@ -46,9 +46,22 @@
         android:name="com.example.drcomputer.fragments.PostUpload"
         android:label="fragment_post_upload"
         tools:layout="@layout/fragment_post_upload" >
+        <argument
+            android:name="post"
+            app:argType="com.example.drcomputer.model.entities.PostEntity" />
         <action
             android:id="@+id/action_postUpload_to_homePage"
             app:destination="@id/homePage" />
+        <action
+            android:id="@+id/action_postUpload_to_postImage"
+            app:destination="@id/postImage">
+            <argument
+                android:name="post"
+                app:argType="com.example.drcomputer.model.entities.PostEntity" />
+            <argument
+                android:name="context"
+                app:argType="string" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/myPosts"
@@ -60,8 +73,7 @@
             app:destination="@id/editPost" >
             <argument
                 android:name="post"
-                app:argType="com.example.drcomputer.model.entities.PostEntity"
-                />
+                app:argType="com.example.drcomputer.model.entities.PostEntity" />
         </action>
     </fragment>
     <fragment
@@ -75,6 +87,13 @@
         <action
             android:id="@+id/action_editPost_to_myPosts"
             app:destination="@id/myPosts" />
+        <action
+            android:id="@+id/action_editPost_to_postImage"
+            app:destination="@id/postImage">
+        <argument
+            android:name="post"
+            app:argType="com.example.drcomputer.model.entities.PostEntity" />
+        </action>
     </fragment>
     <fragment
         android:id="@+id/fullSizePost"
@@ -84,5 +103,29 @@
         <argument
             android:name="post"
             app:argType="com.example.drcomputer.model.entities.PostEntity" />
+    </fragment>
+    <fragment
+        android:id="@+id/postImage"
+        android:name="com.example.drcomputer.fragments.PostImage"
+        android:label="fragment_post_image"
+        tools:layout="@layout/fragment_post_image">
+    <argument
+        android:name="post"
+        app:argType="com.example.drcomputer.model.entities.PostEntity" />
+        <action
+            android:id="@+id/action_postImage_to_editPost"
+            app:destination="@id/editPost">
+            <argument
+                android:name="post"
+                app:argType="com.example.drcomputer.model.entities.PostEntity" />
+        </action>
+        <action
+            android:id="@+id/action_postImage_to_postUpload"
+            app:destination="@id/postUpload">
+            <argument
+                android:name="post"
+                app:argType="com.example.drcomputer.model.entities.PostEntity" />
+
+        </action>
     </fragment>
 </navigation>

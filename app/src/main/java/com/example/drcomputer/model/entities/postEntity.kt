@@ -1,5 +1,6 @@
 package com.example.drcomputer.model.entities
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
@@ -15,7 +16,9 @@ data class PostEntity (
     var motherboard: String,
     var memory: String,
     var ram: String,
-    var uid:String
+    var uid:String,
+    @ColumnInfo(name = "post_img")
+    var postImage: String
 ): Serializable{
     fun fromMap(map: Map<String, Any>)
     {
@@ -26,6 +29,7 @@ data class PostEntity (
         memory = map["memory"].toString()
         ram = map["ram"].toString()
         uid = map["uid"].toString()
+        postImage = map["postImage"].toString()
     }
 
 }

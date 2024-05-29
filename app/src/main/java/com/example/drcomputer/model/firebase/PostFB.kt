@@ -23,6 +23,7 @@ class PostFB {
             "memory" to post.memory,
             "ram" to post.ram,
             "uid" to post.uid,
+            "postImage" to post.postImage
         )
         docRef.set(data)
             .addOnSuccessListener {
@@ -44,7 +45,8 @@ class PostFB {
             "gpu" to post.gpu,
             "motherboard" to post.motherboard,
             "memory" to post.memory,
-            "ram" to post.ram
+            "ram" to post.ram,
+            "postImage" to post.postImage
         )
         postDocRef.update(updatedPostData as Map<String, Any>)
             .addOnSuccessListener {
@@ -78,7 +80,7 @@ class PostFB {
                 val doc = snapshot.result
 
                 for(postMap in doc){
-                    val post = PostEntity(postMap.id, "", "", "", "", "", "", "")
+                    val post = PostEntity(postMap.id, "", "", "", "", "", "", "","")
                     post.fromMap(postMap.data)
 
 
@@ -102,7 +104,7 @@ class PostFB {
                 if (!result.isEmpty) {
                     val list = ArrayList<PostEntity>()
                     for (document in result!!) {
-                        val post=PostEntity(document.id,"", "", "", "", "", "", "")
+                        val post=PostEntity(document.id,"", "", "", "", "", "", "","")
                         post.fromMap(document.data)
                         list.add(post)
 

@@ -44,6 +44,10 @@ class EditPost : Fragment() {
         memoryText.text = post.memory
         ramText.text = post.ram
 
+        view.findViewById<Button>(R.id.btn_addImage)
+            .setOnClickListener{
+                findNavController().navigate(EditPostDirections.actionEditPostToPostImage(post))
+            }
 
         view.findViewById<Button>(R.id.btn_deletePost)
             .setOnClickListener{

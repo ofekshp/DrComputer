@@ -15,10 +15,11 @@ import com.example.drcomputer.viewmodel.UploadPostViewModel
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 
-class PostUpload : Fragment() {
-private lateinit var postViewModel:UploadPostViewModel
-private lateinit var auth:FirebaseAuth
-
+// TODO: CHANGE POST ARGUMENT TO BINIDNG
+ class PostUpload : Fragment() {
+    private lateinit var postViewModel:UploadPostViewModel
+    private lateinit var auth:FirebaseAuth
+    private lateinit var post: PostEntity;
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,7 +32,12 @@ private lateinit var auth:FirebaseAuth
         val motherboardText: TextInputEditText = view.findViewById(R.id.motherboardUp)
         val memoryText: TextInputEditText = view.findViewById(R.id.memoryUp)
         val ramText: TextInputEditText = view.findViewById(R.id.ramUp)
+        val post = arguments?.getSerializable("post") as? PostEntity ?: PostEntity("", "", "", "", "", "", "", "", "")
         auth=FirebaseAuth.getInstance()
+        view.findViewById<Button>(R.id.btn_addImage)
+            .setOnClickListener{
+                findNavController().navigate(PostUploadDirections.actionPostUploadToPostImage(post))
+            }
 
         view.findViewById<Button>(R.id.btn_upload)
             .setOnClickListener{
@@ -41,14 +47,13 @@ private lateinit var auth:FirebaseAuth
             val motherboard: String=motherboardText.text.toString()
             val memory: String=memoryText.text.toString()
             val ram: String=ramText.text.toString()
-
             if(validate(type,cpu,gpu,motherboard,memory,ram))
             {
                 if(auth.currentUser!=null)
                 {
                     postViewModel = ViewModelProvider(this)[UploadPostViewModel::class.java]
-                    val post: PostEntity =PostEntity("",type,cpu,gpu,motherboard,memory,ram, auth.currentUser!!.uid)
-                    postViewModel.uploadPost(post){ isSuccessful->
+                    val newPost: PostEntity =PostEntity("",type,cpu,gpu,motherboard,memory,ram, auth.currentUser!!.uid, post.postImage)
+                    postViewModel.uploadPost(newPost){ isSuccessful->
                         if(isSuccessful)
                         {
                             Toast.makeText(context, "Uploaded successfully", Toast.LENGTH_SHORT).show()

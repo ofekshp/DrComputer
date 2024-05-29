@@ -20,11 +20,11 @@ class homePage : Fragment() {
     private lateinit var postViewModel: GetPostsViewModel
     private lateinit var newRecyclerView: RecyclerView
     private lateinit var myAdapter: MyPostsAdapter
-    private lateinit var newList: ArrayList<PostEntity>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.fragment_home_page, container, false)
         val buttonProfile = view.findViewById<Button>(R.id.btn_profile)
         buttonProfile.setOnClickListener{
@@ -44,21 +44,6 @@ class homePage : Fragment() {
         observeUserPosts()
         return view
     }
-
-
-    private fun getPosts():ArrayList<PostEntity>  {
-
-
-        val list:ArrayList<PostEntity> = arrayListOf<PostEntity>()
-        postViewModel.getAllPosts()
-        postViewModel.posts.observe(viewLifecycleOwner){posts->
-           for (post in posts)
-           {
-               list.add(post)
-           }
-        }
-        return list
-    }
     private fun observeUserPosts() {
         postViewModel.posts.observe(viewLifecycleOwner) { posts ->
             val postsArrayList = ArrayList(posts)
@@ -70,4 +55,17 @@ class homePage : Fragment() {
         postViewModel.getAllPosts()
     }
 
+//  private fun getPosts():ArrayList<PostEntity>  {
+//
+//
+//        val list:ArrayList<PostEntity> = arrayListOf<PostEntity>()
+//        postViewModel.getAllPosts()
+//        postViewModel.posts.observe(viewLifecycleOwner){posts->
+//           for (post in posts)
+//           {
+//               list.add(post)
+//           }
+//        }
+//        return list
+//    }
 }

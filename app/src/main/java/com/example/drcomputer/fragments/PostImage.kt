@@ -39,9 +39,16 @@ class PostImage : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.fragment_post_image, container, false)
         editPostViewModel = ViewModelProvider(this)[EditPostViewModel::class.java]
         val postEntity: PostEntity = arguments?.getSerializable("post") as PostEntity
+        val context:String?
+        if(arguments?.getSerializable("context")!=null)
+            context= arguments?.getSerializable("context") as String
+        else
+            context=null
+
         val changeImageBtn: Button = view.findViewById(R.id.edit_post_img)
         val deleteImageBtn: Button = view.findViewById(R.id.delete_post_img)
         btnSave = view.findViewById(R.id.btn_save)
@@ -63,9 +70,17 @@ class PostImage : Fragment() {
             imageUrlRef = ""
         }
 
-        btnSave.setOnClickListener{
+        btnSave.setOnClickListener {
             postEntity.postImage = imageUrlRef
-            findNavController().popBackStack()
+            if(context!=null) {
+                val bundle = Bundle().apply {
+                    putSerializable("key", postEntity)
+                }
+                parentFragmentManager.setFragmentResult("requestKey", bundle)
+                findNavController().popBackStack()
+            }
+            else
+                findNavController().popBackStack()
         }
 
         return view

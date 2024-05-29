@@ -46,19 +46,22 @@
         android:name="com.example.drcomputer.fragments.PostUpload"
         android:label="fragment_post_upload"
         tools:layout="@layout/fragment_post_upload" >
+        <argument
+            android:name="post"
+            app:argType="com.example.drcomputer.model.entities.PostEntity" />
         <action
             android:id="@+id/action_postUpload_to_homePage"
             app:destination="@id/homePage" />
         <action
             android:id="@+id/action_postUpload_to_postImage"
             app:destination="@id/postImage">
-        <argument
-            android:name="post"
-            app:argType="com.example.drcomputer.model.entities.PostEntity" />
+            <argument
+                android:name="post"
+                app:argType="com.example.drcomputer.model.entities.PostEntity" />
+            <argument
+                android:name="context"
+                app:argType="string" />
         </action>
-        <argument
-            android:name="post"
-            app:argType="com.example.drcomputer.model.entities.PostEntity" />
     </fragment>
     <fragment
         android:id="@+id/myPosts"
@@ -122,6 +125,7 @@
             <argument
                 android:name="post"
                 app:argType="com.example.drcomputer.model.entities.PostEntity" />
+
         </action>
     </fragment>
 </navigation>

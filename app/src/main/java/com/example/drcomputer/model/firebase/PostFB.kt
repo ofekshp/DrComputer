@@ -24,7 +24,7 @@ class PostFB {
             "ram" to post.ram,
             "uid" to post.uid,
         )
-        db.collection("posts").document(post.uid).set(data)
+        docRef.set(data)
             .addOnSuccessListener {
                 println("User uploaded successfully with PID: $post.pid")
                 callback(true)
@@ -94,9 +94,9 @@ class PostFB {
 
     fun getPostsByUserId(uid: String, callback: (List<PostEntity>) -> Unit) {
         val db = Firebase.firestore
-        val usersCollection = db.collection("posts")
+        val postsCollection = db.collection("posts")
 
-        usersCollection.whereEqualTo("uid", uid)
+        postsCollection.whereEqualTo("uid", uid)
             .get()
             .addOnSuccessListener { result ->
                 if (!result.isEmpty) {

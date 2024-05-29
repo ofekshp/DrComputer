@@ -96,9 +96,9 @@ class PostFB {
 
     fun getPostsByUserId(uid: String, callback: (List<PostEntity>) -> Unit) {
         val db = Firebase.firestore
-        val usersCollection = db.collection("posts")
+        val postsCollection = db.collection("posts")
 
-        usersCollection.whereEqualTo("uid", uid)
+        postsCollection.whereEqualTo("uid", uid)
             .get()
             .addOnSuccessListener { result ->
                 if (!result.isEmpty) {

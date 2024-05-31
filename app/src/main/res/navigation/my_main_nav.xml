@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homePage_to_fullSizePost"
             app:destination="@id/fullSizePost" />
+        <action
+            android:id="@+id/action_homePage_to_articles"
+            app:destination="@id/articles" />
     </fragment>
     <fragment
         android:id="@+id/myProfileFragment"
@@ -128,4 +131,9 @@
 
         </action>
     </fragment>
+    <fragment
+        android:id="@+id/articles"
+        android:name="com.example.drcomputer.fragments.Articles"
+        android:label="fragment_articles"
+        tools:layout="@layout/fragment_articles" />
 </navigation>

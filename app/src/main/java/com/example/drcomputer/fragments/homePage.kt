@@ -10,10 +10,13 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.drcomputer.GetDrComputer
 import com.example.drcomputer.R
 import com.example.drcomputer.adapter.MyPostsAdapter
+import com.example.drcomputer.model.api.newsApiService
 import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.viewmodel.GetPostsViewModel
+import java.util.concurrent.Executors
 
 class homePage : Fragment() {
 
@@ -32,7 +35,13 @@ class homePage : Fragment() {
         }
         val buttonUpload=view.findViewById<Button>(R.id.btn_upload)
         buttonUpload.setOnClickListener{
+
             findNavController().navigate(R.id.action_homePage_to_postUpload)
+        }
+
+        val buttonArticle=view.findViewById<Button>(R.id.btn_article)
+        buttonArticle.setOnClickListener{
+            findNavController().navigate(R.id.action_homePage_to_articles)
         }
         postViewModel= ViewModelProvider(this)[GetPostsViewModel::class.java]
         newRecyclerView = view.findViewById(R.id.post_view)

@@ -86,7 +86,8 @@ dependencies {
     implementation("com.google.firebase:firebase-storage:20.3.0")
     implementation("com.google.firebase:firebase-firestore:24.11.1")
     implementation ("com.google.firebase:firebase-appcheck-playintegrity:16.0.0-beta01")
-    
+    implementation ("com.google.code.gson:gson:2.10.1")
+    implementation ("com.squareup.okhttp3:okhttp:4.9.0")
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
     kapt("androidx.room:room-compiler:$room_version")

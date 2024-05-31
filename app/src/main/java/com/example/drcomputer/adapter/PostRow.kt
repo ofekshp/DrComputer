@@ -1,14 +1,13 @@
 package com.example.drcomputer.adapter
 
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
 
 class MyPosts(itemView: View,adapter: MyPostsAdapter) : RecyclerView.ViewHolder(itemView) {
 
-
+    var userName: TextView?=null
     var type: TextView?=null
     var cpu: TextView?=null
     var gpu: TextView?=null
@@ -18,6 +17,7 @@ class MyPosts(itemView: View,adapter: MyPostsAdapter) : RecyclerView.ViewHolder(
 
 
     init {
+        userName = itemView.findViewById(R.id.userName)
         type= itemView.findViewById<TextView>(R.id.type)
         cpu=itemView.findViewById<TextView>(R.id.cpu)
         gpu= itemView.findViewById<TextView>(R.id.gpu)

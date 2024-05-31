@@ -1,6 +1,7 @@
 package com.example.drcomputer.activities
 
 import android.os.Bundle
+import android.view.MotionEvent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -16,5 +17,11 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.mainNav) as NavHostFragment
         navController = navHostFragment.navController
+    }
+
+    override fun onTouchEvent(event: MotionEvent?): Boolean {
+        val action = event?.actionMasked
+
+        return super.onTouchEvent(event)
     }
 }

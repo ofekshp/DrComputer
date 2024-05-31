@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/my_background"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.EditPost">
     <!-- TODO: Update blank fragment layout -->
@@ -121,21 +122,21 @@
                 android:id="@+id/btn_addImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:shadowColor="@color/my_primary"
-                android:text="Add Image"/>
+                android:backgroundTint="@color/color_btn"
+                android:text="Edit Image"/>
 
             <Button
                 android:id="@+id/btn_saveEditPost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:shadowColor="@color/my_primary"
+                android:backgroundTint="@color/color_btn"
                 android:text="Save"/>
 
             <Button
                 android:id="@+id/btn_deletePost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:shadowColor="@color/my_primary"
+                android:backgroundTint="@color/red"
                 android:text="Delete" />
 
 

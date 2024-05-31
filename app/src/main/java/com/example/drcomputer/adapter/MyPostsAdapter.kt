@@ -1,21 +1,17 @@
 package com.example.drcomputer.adapter
 
+
 import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.navigation.NavController
-
-
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
 import com.example.drcomputer.fragments.MyPostsDirections
 import com.example.drcomputer.fragments.homePageDirections
 import com.example.drcomputer.model.entities.PostEntity
 import com.google.firebase.auth.FirebaseAuth
-
-
 
 
 class MyPostsAdapter(
@@ -46,7 +42,9 @@ class MyPostsAdapter(
 
     override fun onBindViewHolder(holder:MyPosts,position:Int)
     {
+
         val post=posts[position]
+        holder.userName?.text=post.userName
         holder.type?.text=post.type
         holder.cpu?.text=post.cpu
         holder.gpu?.text=post.gpu

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/postImage"
     android:layout_width="match_parent"
+    android:background="@color/my_background"
     android:layout_height="match_parent"
     tools:context=".fragments.PostImage">
 
@@ -81,6 +82,7 @@
                         android:layout_gravity="center"
                         android:drawableLeft="@android:drawable/ic_menu_camera"
                         android:text="Change Image"
+                        android:backgroundTint="@color/color_btn"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent" />
 
@@ -89,6 +91,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:backgroundTint="@color/red"
                         android:drawableLeft="@android:drawable/ic_menu_camera"
                         android:text="Delete Image"
                         android:orientation="vertical"/>
@@ -111,7 +114,7 @@
                     android:id="@+id/btn_save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:shadowColor="@color/my_primary"
+                    android:backgroundTint="@color/color_btn"
                     android:text="Save" />
 
 

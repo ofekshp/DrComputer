@@ -6,6 +6,7 @@
     android:id="@+id/loginFrameArrow"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/my_background"
     tools:context=".fragments.LoginFragment">
 
     <LinearLayout
@@ -53,7 +54,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/emailLog"
@@ -65,7 +67,8 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordLog"
@@ -85,6 +88,7 @@
             android:id="@+id/btn_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/color_btn"
             android:text="@string/login" />
 
 

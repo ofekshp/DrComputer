@@ -10,7 +10,7 @@ import com.example.drcomputer.model.room.daos.PostDao
 import com.example.drcomputer.model.room.daos.UserDao
 
 
-@Database(entities = [UserEntity::class,PostEntity::class ], version = 4, exportSchema = false)
+@Database(entities = [UserEntity::class,PostEntity::class ], version = 3, exportSchema = false)
 abstract class AppLocalDB : RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun postDao():PostDao

@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
 import com.example.drcomputer.adapter.MyPostsAdapter
-import com.example.drcomputer.model.entities.PostEntity
 import com.example.drcomputer.viewmodel.GetPostsViewModel
 
 class homePage : Fragment() {
@@ -55,17 +54,4 @@ class homePage : Fragment() {
         postViewModel.getAllPosts()
     }
 
-//  private fun getPosts():ArrayList<PostEntity>  {
-//
-//
-//        val list:ArrayList<PostEntity> = arrayListOf<PostEntity>()
-//        postViewModel.getAllPosts()
-//        postViewModel.posts.observe(viewLifecycleOwner){posts->
-//           for (post in posts)
-//           {
-//               list.add(post)
-//           }
-//        }
-//        return list
-//    }
 }

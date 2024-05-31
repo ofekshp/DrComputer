@@ -17,6 +17,7 @@ data class PostEntity (
     var memory: String,
     var ram: String,
     var uid:String,
+    var userName:String,
     @ColumnInfo(name = "post_img")
     var postImage: String
 ): Serializable{
@@ -29,6 +30,7 @@ data class PostEntity (
         memory = map["memory"].toString()
         ram = map["ram"].toString()
         uid = map["uid"].toString()
+        userName = map["userName"].toString()
         postImage = map["postImage"].toString()
     }
 

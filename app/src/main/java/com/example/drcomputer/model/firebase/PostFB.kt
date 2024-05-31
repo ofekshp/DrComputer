@@ -23,6 +23,7 @@ class PostFB {
             "memory" to post.memory,
             "ram" to post.ram,
             "uid" to post.uid,
+            "userName" to post.userName,
             "postImage" to post.postImage
         )
         docRef.set(data)
@@ -80,7 +81,7 @@ class PostFB {
                 val doc = snapshot.result
 
                 for(postMap in doc){
-                    val post = PostEntity(postMap.id, "", "", "", "", "", "", "","")
+                    val post = PostEntity(postMap.id, "", "", "", "", "", "", "","","")
                     post.fromMap(postMap.data)
 
 
@@ -104,7 +105,7 @@ class PostFB {
                 if (!result.isEmpty) {
                     val list = ArrayList<PostEntity>()
                     for (document in result!!) {
-                        val post=PostEntity(document.id,"", "", "", "", "", "", "","")
+                        val post=PostEntity(document.id,"", "", "", "", "", "", "","","")
                         post.fromMap(document.data)
                         list.add(post)
 

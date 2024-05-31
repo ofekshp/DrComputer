@@ -41,16 +41,19 @@ class LoginFragment : Fragment() {
             }
             else {
                 progressBar.visibility = View.VISIBLE
+                btnLog.isClickable = false
                 auth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             progressBar.visibility = View.GONE
                             Toast.makeText(context, "Login Success", Toast.LENGTH_SHORT).show()
+                            btnLog.isClickable = true
                             val submitActivityIntent = Intent(context, MainActivity::class.java)
                             startActivity(submitActivityIntent)
                         } else {
                             Toast.makeText(context, "Login Failed", Toast.LENGTH_LONG).show()
                             progressBar.visibility = View.GONE
+                            btnLog.isClickable = true
                         }
                     }
             }

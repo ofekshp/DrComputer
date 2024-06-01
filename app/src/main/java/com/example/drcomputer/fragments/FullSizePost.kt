@@ -36,15 +36,15 @@ class FullSizePost : Fragment() {
         var motherboard= view.findViewById<TextView>(R.id.motherboard)
         var memory= view.findViewById<TextView>(R.id.memory)
         var ram= view.findViewById<TextView>(R.id.ram)
-        var uid=view.findViewById<TextView>(R.id.uid)
+        var userName=view.findViewById<TextView>(R.id.userName)
         var imgPost= view.findViewById<ImageView>(R.id.imgPost)
         profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
         profileViewModel.getUserByUid(post.uid){ userEntity ->
             if(userEntity!=null){
-                uid.text= userEntity.userName
+                userName.text= userEntity.userName
             }
             else{
-                uid.text="Error404"
+                userName.text="Error404"
             }
             spinner.visibility = View.GONE
             contentLayout.visibility = View.VISIBLE

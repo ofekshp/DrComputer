@@ -33,6 +33,10 @@ class homePage : Fragment() {
         buttonUpload.setOnClickListener{
             findNavController().navigate(R.id.action_homePage_to_postUpload)
         }
+        val buttonArticles=view.findViewById<Button>(R.id.btn_article)
+        buttonArticles.setOnClickListener{
+            findNavController().navigate(R.id.action_homePage_to_articles)
+        }
         postViewModel= ViewModelProvider(this)[GetPostsViewModel::class.java]
         newRecyclerView = view.findViewById(R.id.post_view)
         newRecyclerView.layoutManager = LinearLayoutManager(requireContext())

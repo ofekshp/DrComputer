@@ -5,7 +5,7 @@
     android:id="@+id/mainFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp"
+    android:background="@color/my_background"
     tools:context=".activities.AuthActivity">
 
     <androidx.fragment.app.FragmentContainerView

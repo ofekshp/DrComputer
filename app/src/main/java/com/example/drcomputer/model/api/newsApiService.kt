@@ -1,5 +1,6 @@
 package com.example.drcomputer.model.api
 
+import android.annotation.SuppressLint
 import com.example.drcomputer.adapter.NewsResponse
 import okhttp3.OkHttpClient
 import java.text.SimpleDateFormat
@@ -12,6 +13,7 @@ import com.google.gson.Gson
 class newsApiService
 {
     private val baseUrl="https://newsapi.org/v2/"
+
      fun makeCall(callback: (Boolean) -> Unit):NewsResponse? {
         val dateFormat = SimpleDateFormat("yyyy-MM-dd")
         val today: Date = Calendar.getInstance().time

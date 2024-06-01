@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/registerFrameArrow"
     android:layout_width="match_parent"
+    android:background="@color/my_background"
     android:layout_height="match_parent"
     tools:context=".fragments.RegisterFragment">
 
@@ -52,7 +53,8 @@
                 android:textStyle="bold" />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/userNameReg"
@@ -63,7 +65,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/emailReg"
@@ -74,7 +77,8 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/passwordReg"
@@ -94,7 +98,7 @@
                 android:id="@+id/btn_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:shadowColor="@color/my_primary"
+                android:backgroundTint="@color/color_btn"
                 android:text="@string/register"/>
 
 

@@ -1,20 +1,19 @@
 package com.example.drcomputer.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
 import com.example.drcomputer.R
 import com.example.drcomputer.model.entities.PostEntity
-import com.example.drcomputer.viewmodel.EditPostViewModel
 import com.example.drcomputer.viewmodel.ProfileViewModel
+import com.squareup.picasso.Picasso
 
 class FullSizePost : Fragment() {
     private lateinit var profileViewModel: ProfileViewModel
@@ -38,6 +37,7 @@ class FullSizePost : Fragment() {
         var memory= view.findViewById<TextView>(R.id.memory)
         var ram= view.findViewById<TextView>(R.id.ram)
         var uid=view.findViewById<TextView>(R.id.uid)
+        var imgPost= view.findViewById<ImageView>(R.id.imgPost)
         profileViewModel = ViewModelProvider(this)[ProfileViewModel::class.java]
         profileViewModel.getUserByUid(post.uid){ userEntity ->
             if(userEntity!=null){
@@ -55,7 +55,12 @@ class FullSizePost : Fragment() {
         motherboard.text="motherboard: "+post.motherboard
         memory.text="memory: "+post.memory
         ram.text="ram: "+post.ram
+        if (!post.postImage.isNullOrEmpty()) {
+            Picasso.get().load(post.postImage).into(imgPost)
+        }
+        else
+            Picasso.get().load(R.drawable.question_mark).into(imgPost)
         return view
     }
-
 }
+

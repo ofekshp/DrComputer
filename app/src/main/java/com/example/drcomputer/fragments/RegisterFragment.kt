@@ -47,6 +47,7 @@ class RegisterFragment : Fragment() {
             else {
                 val user = UserEntity("",userName,email,"")
                 progressBar.visibility = View.VISIBLE
+                btnReg.isClickable = false
                 registerUserViewModel.register(user,password){isSuccessful ->
                     if(isSuccessful)
                     {
@@ -57,12 +58,14 @@ class RegisterFragment : Fragment() {
                         val text: TextView? = view?.findViewById(android.R.id.message)
                         text?.setTextColor(Color.RED)
                         toast.show()
+                        btnReg.isClickable = true
                         val submitActivityIntent = Intent(context, MainActivity::class.java)
                         startActivity(submitActivityIntent)
                     }
                     else {
                         Toast.makeText(context, "Register Failed", Toast.LENGTH_LONG).show()
                         progressBar.visibility = View.GONE
+                        btnReg.isClickable = true
                     }
                 }
             }

@@ -166,6 +166,7 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_marginTop="100dp"
+            android:background="@color/color_btn_nav"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

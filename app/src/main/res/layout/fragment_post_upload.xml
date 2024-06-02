@@ -115,6 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/color_btn"
+                android:drawableLeft="@android:drawable/ic_menu_camera"
                 android:text="Add Image"/>
 
             <Button
@@ -122,6 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/color_btn"
+                android:drawableLeft="@drawable/baseline_create_24"
                 android:text="Post"/>
 
 

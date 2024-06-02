@@ -122,6 +122,7 @@
                 android:id="@+id/btn_addImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@android:drawable/ic_menu_camera"
                 android:backgroundTint="@color/color_btn"
                 android:text="Edit Image"/>
 
@@ -129,6 +130,7 @@
                 android:id="@+id/btn_saveEditPost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/baseline_check_box_24"
                 android:backgroundTint="@color/green"
                 android:text="Save"/>
 
@@ -136,6 +138,7 @@
                 android:id="@+id/btn_deletePost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/baseline_delete_24"
                 android:backgroundTint="@color/red"
                 android:text="Delete" />
 

@@ -69,10 +69,13 @@
                     <!-- User Image -->
                     <ImageView
                         android:id="@+id/edit_user_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="175dp"
+                        android:layout_height="165dp"
+                        android:layout_marginTop="12dp"
                         android:src="@drawable/default_img_profile"
                         app:layout_constraintDimensionRatio="H, 1:1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -93,10 +96,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:drawableLeft="@android:drawable/ic_menu_camera"
-                    android:text="Delete Image"
                     android:backgroundTint="@color/red"
-                    android:orientation="vertical"/>
+                    android:drawableLeft="@android:drawable/ic_menu_camera"
+                    android:orientation="vertical"
+                    android:text="Delete Image" />
             </LinearLayout>
             <!-- Image Profile -->
 

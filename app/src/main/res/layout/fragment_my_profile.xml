@@ -102,12 +102,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/color_btn"
+                android:drawableLeft="@drawable/baseline_create_24"
                 android:text="My Posts" />
             <Button
                 android:id="@+id/btn_edit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/color_btn"
+                android:drawableLeft="@drawable/baseline_account_box_24"
                 android:text="@string/edit" />
 
             <Button
@@ -115,6 +117,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/red"
+                android:drawableLeft="@drawable/baseline_logout_24"
                 android:text="@string/logout" />
 
         </LinearLayout>

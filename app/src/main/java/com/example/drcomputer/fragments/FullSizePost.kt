@@ -18,6 +18,7 @@ import com.squareup.picasso.Picasso
 class FullSizePost : Fragment() {
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var spinner: ProgressBar
+    private lateinit var progressBar: ProgressBar
     private lateinit var contentLayout: ConstraintLayout
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +29,7 @@ class FullSizePost : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_full_size_post, container, false)
         spinner = view.findViewById(R.id.spinner)
+        progressBar = view.findViewById(R.id.progressBar)
         contentLayout = view.findViewById(R.id.contentLayout)
         val post: PostEntity = arguments?.getSerializable("post") as PostEntity
         var type= view.findViewById<TextView>(R.id.type)
@@ -56,7 +58,9 @@ class FullSizePost : Fragment() {
         memory.text="memory: "+post.memory
         ram.text="ram: "+post.ram
         if (!post.postImage.isNullOrEmpty()) {
+            progressBar.visibility = View.VISIBLE
             Picasso.get().load(post.postImage).into(imgPost)
+            progressBar.visibility = View.GONE
         }
         else
             Picasso.get().load(R.drawable.question_mark).into(imgPost)
